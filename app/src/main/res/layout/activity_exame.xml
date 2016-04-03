@@ -10,46 +10,47 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Agendar Exame"
-        android:textSize="12pt"
+        android:textSize="7pt"
         android:layout_gravity="center_horizontal"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Local do Exame:"
-        android:textSize="10pt"/>
+        android:textSize="7pt"/>
 
     <EditText
         android:id="@+id/nome_clini_exame"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="digite o local do exame:"
-        android:textSize="10pt"/>
+        android:textSize="7pt"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Data:"
-        android:textSize="10pt"
+        android:textSize="7pt"
         />
     <EditText
         android:id="@+id/data_exame"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="DD/MM/AAAA"
-        android:textSize="10pt"/>
+        android:inputType="date"
+        android:textSize="7pt"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Tipo:"
-        android:textSize="10pt"/>
+        android:textSize="7pt"/>
 
     <Spinner
         android:id="@+id/tipo_exame"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:entries="@array/taxa"
-        android:scrollbarSize="12pt">
+        android:scrollbarSize="7pt">
     </Spinner>
 
     <Spinner
@@ -57,7 +58,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:entries="@array/status"
-        android:scrollbarSize="12pt"></Spinner>
+        android:scrollbarSize="7pt"></Spinner>
 
 
     <Button
@@ -65,7 +66,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Agendar Exame"
-        android:textSize="10pt"
+        android:textSize="7pt"
         android:onClick="exameClick"/>
 
 

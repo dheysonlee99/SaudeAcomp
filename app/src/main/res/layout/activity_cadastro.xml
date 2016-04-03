@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cadastrar Paciente"
-        android:textSize="6pt"
+        android:textSize="7pt"
         android:layout_gravity="center_horizontal"/>
 
     <TextView
@@ -20,19 +20,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/nome"
-        android:textSize="6pt"/>
+        android:textSize="7pt"/>
 
     <EditText
         android:id="@+id/nome_paciente"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/nome_com"
-        android:textSize="6pt"/>
+        android:textSize="7pt"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="6pt"
+        android:textSize="7pt"
         android:text="Idade"/>
 
     <EditText
@@ -40,7 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="idade"
-        android:textSize="6pt"
+        android:textSize="7pt"
         android:inputType="number"/>
 
     <TextView
@@ -48,27 +48,27 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/cart_sus"
-        android:textSize="6pt"/>
+        android:textSize="7pt"/>
 
     <EditText
         android:id="@+id/numeros_sus"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/numeros"
-        android:textSize="6pt"
+        android:textSize="7pt"
         android:inputType="number"/>
     <TextView
         android:id="@+id/sexo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/sexos"
-        android:textSize="6pt"/>
+        android:textSize="7pt"/>
     <Spinner
         android:id="@+id/tipo_sexo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:entries="@array/tipoSexo"
-        android:scrollbarSize="6pt">
+        android:scrollbarSize="7pt">
 
     </Spinner>
 
@@ -79,6 +79,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/cadastrar"
-        android:onClick="cadastraClick"/>
+        android:onClick="cadastraClick"
+        android:textSize="7pt"/>
 
 </LinearLayout>

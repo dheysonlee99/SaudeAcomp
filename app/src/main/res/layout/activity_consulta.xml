@@ -12,48 +12,50 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Agendar Consulta"
-        android:textSize="10pt"
+        android:textSize="7pt"
         android:layout_gravity="center_horizontal"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Clinica:"
-        android:textSize="10pt"/>
+        android:textSize="7pt"/>
 
     <EditText
         android:id="@+id/nome_clinica"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Nome da Clinica/Hospital"
-        android:textSize="10pt"/>
+        android:textSize="7pt"/>
 
     <TextView
         android:id="@+id/text_data"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Data:"
-        android:textSize="10pt"/>
+        android:textSize="7pt"/>
 
     <EditText
         android:id="@+id/data_consulta"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="10pt"
+        android:textSize="7pt"
         android:inputType="date"
-        android:hint="DD/MM/AAAA"/>
+        android:hint="DD/MM/AAAA"
+        />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Especialidade:"
-        android:textSize="10pt"/>
+        android:textSize="7pt"/>
 
     <Spinner
         android:id="@+id/especialidade"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:entries="@array/especialidades"
+        android:scrollbarSize="7pt"
         >
     </Spinner>
 
@@ -61,13 +63,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Status da Consulta"
-        android:textSize="10pt"/>
+        android:textSize="7pt"/>
 
     <Spinner
         android:id="@+id/status_consulta"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:entries="@array/status"
+        android:scrollbarSize="7pt"
         ></Spinner>
 
     <Button
@@ -75,6 +78,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Agendar"
+        android:textSize="7pt"
         android:onClick="agendaClick"/>
 
 </LinearLayout>

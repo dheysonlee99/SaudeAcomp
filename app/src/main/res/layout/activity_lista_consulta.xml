@@ -12,12 +12,13 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:text="Consultas"
-        android:textSize="12pt"
+        android:textSize="7pt"
         />
 
     <ListView
         android:id="@+id/list_consulta"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></ListView>
+        android:layout_height="wrap_content"
+        android:scrollbarSize="7pt"></ListView>
 
 </LinearLayout>

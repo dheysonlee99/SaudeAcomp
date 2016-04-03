@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Prescrição de  Remédio"
-        android:textSize="12pt"
+        android:textSize="7pt"
         android:layout_gravity="center_horizontal"
         />
 
@@ -18,32 +18,32 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Remédio:"
-        android:textSize="10pt"/>
+        android:textSize="7pt"/>
     <EditText
         android:id="@+id/nome_remedio"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="10pt"
+        android:textSize="7pt"
         android:hint="Nome do Remédio"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Modo de uso:"
-        android:textSize="10pt"/>
+        android:textSize="7pt"/>
 
     <EditText
         android:id="@+id/modo_uso"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="modo de Uso"
-        android:textSize="10pt"/>
+        android:textSize="7pt"/>
     <Button
         android:id="@+id/add_remedio"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Add Remedio"
-        android:textSize="10pt"
+        android:textSize="7pt"
         android:onClick="remedioClick"/>
 
 </LinearLayout>
