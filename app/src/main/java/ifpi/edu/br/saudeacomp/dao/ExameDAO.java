@@ -6,6 +6,7 @@ import android.database.Cursor;
 import java.util.ArrayList;
 import java.util.List;
 
+import ifpi.edu.br.saudeacomp.modelo.Consulta;
 import ifpi.edu.br.saudeacomp.modelo.Exame;
 
 /**
@@ -45,6 +46,11 @@ public class ExameDAO {
         }
 
         return exames;
+    }
+
+    public void remover(Exame exame){
+        String[] args = {String.valueOf(exame.getId())};
+        ass.getWritableDatabase().delete("Exame", "id = ?", args);
     }
 
 }
