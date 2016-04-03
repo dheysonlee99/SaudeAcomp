@@ -103,20 +103,6 @@ public class PacienteDAO extends SQLiteOpenHelper {
         return pacientes;
     }
 
-    public void inserirConsulta(Consulta consulta){
-        ContentValues cv = new ContentValues();
-        cv.put("nome", consulta.getNome());
-        cv.put("data", consulta.getData());
-        cv.put("especialidade", consulta.getEspecialidade());
-        cv.put("status", consulta.getStatus());
-
-        getWritableDatabase().insert("Consulta", null, cv);
-    }
-
-
-
-
-
     public void remover(Paciente paciente) {
 
         String[] args = {String.valueOf(paciente.getId())};

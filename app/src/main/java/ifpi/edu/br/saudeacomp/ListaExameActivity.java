@@ -32,7 +32,7 @@ public class ListaExameActivity extends AppCompatActivity {
 
 
     public void recarregarDados(){
-        ListView listExames = (ListView)findViewById(R.id.list_exames);
+        ListView listExames = (ListView)findViewById(R.id.list_exame);
         ExameDAO dao = new ExameDAO(ass);
         List<Exame> exames = dao.listar();
 
