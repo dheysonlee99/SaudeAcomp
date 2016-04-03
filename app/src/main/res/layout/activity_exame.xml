@@ -9,23 +9,23 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Agendar Exame"
-        android:textSize="7pt"
-        android:layout_gravity="center_horizontal"/>
+        android:text="Marcar Exame: "
+        android:layout_gravity="center_horizontal"
+        android:textSize="7pt"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Local do Exame:"
+        android:text="Local:"
         android:textSize="7pt"/>
+
 
     <EditText
-        android:id="@+id/nome_clini_exame"
+        android:id="@+id/nome_exames"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="digite o local do exame:"
+        android:hint="nome do local"
         android:textSize="7pt"/>
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -33,12 +33,12 @@
         android:textSize="7pt"
         />
     <EditText
-        android:id="@+id/data_exame"
+        android:id="@+id/data_exames"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="DD/MM/AAAA"
-        android:inputType="date"
         android:textSize="7pt"/>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -46,28 +46,30 @@
         android:textSize="7pt"/>
 
     <Spinner
-        android:id="@+id/tipo_exame"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:id="@+id/tipo_exames"
         android:entries="@array/taxa"
-        android:scrollbarSize="7pt">
-    </Spinner>
-
-    <Spinner
-        android:id="@+id/status_exame"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:entries="@array/status"
         android:scrollbarSize="7pt"></Spinner>
 
-
-    <Button
-        android:id="@+id/agend_exame"
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Agendar Exame"
+        android:text="Status do Exame"
+        android:textSize="7pt"/>
+
+    <Spinner
+        android:id="@+id/status_exames"
+        android:entries="@array/status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbarSize="7pt"></Spinner>
+    <Button
+        android:id="@+id/agendar_exames"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Marcar Exame"
         android:textSize="7pt"
         android:onClick="exameClick"/>
-
 
 </LinearLayout>

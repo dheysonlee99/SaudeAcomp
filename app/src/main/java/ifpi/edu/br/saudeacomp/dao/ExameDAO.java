@@ -21,19 +21,18 @@ public class ExameDAO {
 
     public void inserirExame(Exame exame){
         ContentValues cv = new ContentValues();
-        cv.put("nome",exame.getNomeLocal());
-        cv.put("data",exame.getData());
-        cv.put("status",exame.getStatus());
-        cv.put("resultado",exame.getResultado());
+        cv.put("nome", exame.getNomeLocal());
+        cv.put("data", exame.getData());
+        cv.put("tipo",exame.getTipo());
+        cv.put("Status",exame.getStatus());
 
-        ass.getWritableDatabase().insert("Exame",null,cv);
+        ass.getWritableDatabase().insert("Exame", null, cv);
     }
 
-    public List<Exame> listar() {
+    public List<Exame> listar(){
         List<Exame> exames = new ArrayList<>();
         String sql = "SELECT * FROM Exame;";
-        Cursor c = ass.getReadableDatabase().rawQuery(sql, null);
-
+        Cursor c = ass.getWritableDatabase().rawQuery(sql,null);
         while (c.moveToNext()) {
             int id = c.getInt(c.getColumnIndex("id"));
             String nome = c.getString(c.getColumnIndex("nome"));

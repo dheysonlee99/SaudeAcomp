@@ -7,8 +7,8 @@ import android.widget.ListView;
 
 import java.util.List;
 
-import ifpi.edu.br.saudeacomp.dao.PacienteDAO;
 import ifpi.edu.br.saudeacomp.dao.ExameDAO;
+import ifpi.edu.br.saudeacomp.dao.PacienteDAO;
 import ifpi.edu.br.saudeacomp.modelo.Exame;
 
 public class ListaExameActivity extends AppCompatActivity {
@@ -23,23 +23,18 @@ public class ListaExameActivity extends AppCompatActivity {
         ass = new PacienteDAO(this);
     }
 
-
     @Override
     protected void onResume() {
         super.onResume();
         recarregarDados();
     }
 
-
     public void recarregarDados(){
-        ListView listExames = (ListView)findViewById(R.id.list_exame);
+        ListView listExames = (ListView)findViewById(R.id.list_exames);
         ExameDAO dao = new ExameDAO(ass);
-        List<Exame> exames = dao.listar();
-
+        List<Exame> exames  = dao.listar();
         ArrayAdapter<Exame> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, exames);
 
         listExames.setAdapter(adapter);
     }
-
-
 }

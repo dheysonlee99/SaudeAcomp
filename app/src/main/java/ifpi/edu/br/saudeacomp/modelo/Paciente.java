@@ -61,7 +61,7 @@ public class Paciente {
 
     @Override
     public String toString() {
-        return "Nome do Paciente: " +
+        return "Nome do Paciente: " +"\n"+
                 this.nome +"\n"+
                 "Cartao do Sus: "+
                 this.susNumero+"\n"+

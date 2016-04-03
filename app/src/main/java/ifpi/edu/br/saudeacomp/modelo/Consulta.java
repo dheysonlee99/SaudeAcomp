@@ -80,7 +80,7 @@ public class Consulta {
 
     @Override
     public String toString() {
-        return "Local da Consulta: "+ this.nome + "\n"+
+        return "Local da Consulta: "+"\n"+ this.nome + "\n"+
                 "Especialidade: " + this.especialidade + "\n"+
                 "Data: " + this.data + "  Status: "+ this.status;
     }

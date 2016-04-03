@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ifpi.edu.br.saudeacomp.modelo.Consulta;
+import ifpi.edu.br.saudeacomp.modelo.Exame;
 import ifpi.edu.br.saudeacomp.modelo.Paciente;
 
 /**
@@ -19,7 +20,7 @@ public class PacienteDAO extends SQLiteOpenHelper {
 
     public PacienteDAO(Context context) {
 
-        super(context,"Pacientes.bd", null, 5);
+        super(context,"Pacientes.bd", null, 6);
     }
 
 
@@ -108,6 +109,8 @@ public class PacienteDAO extends SQLiteOpenHelper {
         String[] args = {String.valueOf(paciente.getId())};
         getWritableDatabase().delete("Paciente", "id = ?", args);
     }
+
+
 
    
 }

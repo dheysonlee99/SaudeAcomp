@@ -71,7 +71,7 @@ public class Exame {
 
     @Override
     public String toString() {
-        return "Local do Exame: " + this.nomeLocal + "\n"+
+        return "Local do Exame: " +"\n"+ this.nomeLocal + "\n"+
                 "Tipo de Exame: "+ this.tipo +
                 "Data: " + this.data + "Status: "+ this.status;
     }

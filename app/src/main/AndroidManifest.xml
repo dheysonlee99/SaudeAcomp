@@ -15,13 +15,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CadastroActivity" />
+        <activity android:name=".CadastroActivity"
+            android:parentActivityName=".SaudeActivity" />
         <activity android:name=".ConsultaActivity" />
-        <activity android:name=".ExameActivity" />
         <activity android:name=".RemedioActivity" />
         <activity android:name=".ListaConsultaActivity" />
-        <activity android:name=".ListaExameActivity" />
-        <activity android:name=".ListaRemedioActivity"></activity>
+        <activity android:name=".ListaRemedioActivity" />
+        <activity android:name=".ExameActivity" />
+        <activity android:name=".ListaExameActivity"></activity>
     </application>
 
 </manifest>
