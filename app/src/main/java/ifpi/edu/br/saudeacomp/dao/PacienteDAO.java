@@ -109,10 +109,4 @@ public class PacienteDAO extends SQLiteOpenHelper {
         String[] args = {String.valueOf(paciente.getId())};
         getWritableDatabase().delete("Paciente", "id = ?", args);
     }
-
-
-
-
-
-   
 }
