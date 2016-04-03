@@ -1,4 +1,4 @@
-package ifpi.edu.br.saudeacomp;
+package ifpi.edu.br.saudeacomp.activities;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -14,6 +14,7 @@ import android.widget.ListView;
 import java.util.List;
 
 
+import ifpi.edu.br.saudeacomp.R;
 import ifpi.edu.br.saudeacomp.dao.ExameDAO;
 import ifpi.edu.br.saudeacomp.dao.PacienteDAO;
 import ifpi.edu.br.saudeacomp.modelo.Exame;

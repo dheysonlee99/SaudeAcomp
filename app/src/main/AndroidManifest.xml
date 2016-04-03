@@ -8,21 +8,21 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SaudeActivity">
+        <activity android:name=".activities.SaudeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CadastroActivity"
-            android:parentActivityName=".SaudeActivity" />
-        <activity android:name=".ConsultaActivity" />
-        <activity android:name=".RemedioActivity" />
-        <activity android:name=".ListaConsultaActivity" />
-        <activity android:name=".ListaRemedioActivity" />
-        <activity android:name=".ExameActivity" />
-        <activity android:name=".ListaExameActivity"></activity>
+        <activity android:name=".activities.CadastroActivity"
+            android:parentActivityName=".activities.SaudeActivity" />
+        <activity android:name=".activities.ConsultaActivity" />
+        <activity android:name=".activities.RemedioActivity" />
+        <activity android:name=".activities.ListaConsultaActivity" />
+        <activity android:name=".activities.ListaRemedioActivity" />
+        <activity android:name=".activities.ExameActivity" />
+        <activity android:name=".activities.ListaExameActivity"></activity>
     </application>
 
 </manifest>

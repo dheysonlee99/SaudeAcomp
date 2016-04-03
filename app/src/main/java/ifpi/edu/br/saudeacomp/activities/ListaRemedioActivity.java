@@ -1,4 +1,4 @@
-package ifpi.edu.br.saudeacomp;
+package ifpi.edu.br.saudeacomp.activities;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -13,58 +13,57 @@ import android.widget.ListView;
 
 import java.util.List;
 
+import ifpi.edu.br.saudeacomp.R;
 import ifpi.edu.br.saudeacomp.dao.PacienteDAO;
-import ifpi.edu.br.saudeacomp.dao.ConsultaDAO;
-import ifpi.edu.br.saudeacomp.modelo.Consulta;
+import ifpi.edu.br.saudeacomp.dao.RemedioDAO;
+import ifpi.edu.br.saudeacomp.modelo.Remedio;
 
+public class ListaRemedioActivity extends AppCompatActivity {
 
-public class ListaConsultaActivity extends AppCompatActivity {
-
-    private Consulta consulta;
+    private Remedio remedio;
     private PacienteDAO ass;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lista_consulta);
+        setContentView(R.layout.activity_lista_remedio);
 
         ass = new PacienteDAO(this);
 
-        final ListView listConsulta = (ListView) findViewById(R.id.list_consulta);
-        registerForContextMenu(listConsulta);
+        final ListView listRemedio = (ListView) findViewById(R.id.list_remedios);
+        registerForContextMenu(listRemedio);
 
-        listConsulta.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        listRemedio.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                //Toast.makeText(SaudeActivity.this, "Clico longo em " + parent.getItemAtPosition(position), Toast.LENGTH_SHORT).show();
-                consulta = (Consulta) parent.getItemAtPosition(position);
+
+                remedio = (Remedio) parent.getItemAtPosition(position);
                 return false;
             }
         });
     }
-
 
     @Override
     protected void onResume() {
         super.onResume();
 
         recarregarDados();
-
     }
 
-    private void recarregarDados() {
-        ListView listConsultas = (ListView) findViewById(R.id.list_consulta);
-        ConsultaDAO dao = new ConsultaDAO(ass);
-        List<Consulta> consultas = dao.listar();
+    public void recarregarDados(){
+        ListView listRemedios = (ListView)findViewById(R.id.list_remedios);
+        RemedioDAO dao = new RemedioDAO(ass);
+        List<Remedio> remedios = dao.listar();
 
-        ArrayAdapter<Consulta> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, consultas);
+        ArrayAdapter<Remedio> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, remedios);
 
-        listConsultas.setAdapter(adapter);
+        listRemedios.setAdapter(adapter);
     }
 
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
-        MenuItem item1 = menu.add("Remover Consulta");
+        MenuItem item1 = menu.add("Remover Exame");
 
         item1.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
 
@@ -72,14 +71,14 @@ public class ListaConsultaActivity extends AppCompatActivity {
             public boolean onMenuItemClick(MenuItem item) {
 
 
-                AlertDialog.Builder c = new AlertDialog.Builder(ListaConsultaActivity.this);
-                ass = new PacienteDAO(ListaConsultaActivity.this);
-                c.setMessage("Deseja Apagar esta consulta?");
+                AlertDialog.Builder c = new AlertDialog.Builder(ListaRemedioActivity.this);
+                ass = new PacienteDAO(ListaRemedioActivity.this);
+                c.setMessage("Deseja Apagar este remedio?");
                 c.setPositiveButton("SIM", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        ConsultaDAO dao = new ConsultaDAO(ass);
-                        dao.remover(consulta);
+                        RemedioDAO dao = new RemedioDAO(ass);
+                        dao.remover(remedio);
                         recarregarDados();
                     }
                 });
@@ -89,4 +88,6 @@ public class ListaConsultaActivity extends AppCompatActivity {
             }
         });
     }
+
+
 }

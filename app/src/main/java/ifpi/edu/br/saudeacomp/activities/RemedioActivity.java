@@ -1,4 +1,4 @@
-package ifpi.edu.br.saudeacomp;
+package ifpi.edu.br.saudeacomp.activities;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
+import ifpi.edu.br.saudeacomp.R;
 import ifpi.edu.br.saudeacomp.dao.PacienteDAO;
 import ifpi.edu.br.saudeacomp.dao.RemedioDAO;
 import ifpi.edu.br.saudeacomp.modelo.Remedio;
