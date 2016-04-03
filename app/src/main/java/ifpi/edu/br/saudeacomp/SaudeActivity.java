@@ -41,11 +41,6 @@ public class SaudeActivity extends AppCompatActivity {
 
                 paciente = (Paciente) parent.getItemAtPosition(position);
 
-
-                //Intent ir = new Intent(SaudeActivity.this, RemedioActivity.class);
-                //startActivity(ir);
-
-
             }
         });
 

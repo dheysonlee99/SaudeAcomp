@@ -23,6 +23,7 @@ public class ConsultaDAO  {
     public void inserirConsulta(Consulta consulta){
         ContentValues cv = new ContentValues();
         cv.put("nome", consulta.getNome());
+        //cv.put("paciente_id",getPaciente().getId());
         cv.put("data", consulta.getData());
         cv.put("especialidade", consulta.getEspecialidade());
         cv.put("status", consulta.getStatus());
@@ -53,5 +54,12 @@ public class ConsultaDAO  {
         String[] args = {String.valueOf(consulta.getId())};
         ass.getWritableDatabase().delete("Consulta", "id = ?", args);
     }
+
+    /*public void atualizarStatus(Consulta consulta){
+        ContentValues cv = new ContentValues();
+        cv.put("status",consulta.getStatus());
+        String[] args = {String.valueOf(consulta.getId())};
+        ass.getWritableDatabase().update("Consulta",cv, "id = ?", args);
+    }*/
 
 }
