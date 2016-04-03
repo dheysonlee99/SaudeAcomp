@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ifpi.edu.br.saudeacomp.CadastroActivity"
+    android:orientation="vertical">
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cadastrar Paciente"
+        android:textSize="12pt"
+        android:layout_gravity="center_horizontal"/>
+
+    <TextView
+        android:id="@+id/nome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/nome"
+        android:textSize="10pt"/>
+
+    <EditText
+        android:id="@+id/nome_paciente"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/nome_com"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="10pt"
+        android:text="Idade"/>
+
+    <EditText
+        android:id="@+id/idade"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="idade"
+        android:textSize="10pt"
+        android:inputType="number"/>
+
+    <TextView
+        android:id="@+id/sus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/cart_sus"
+        android:textSize="10pt"/>
+
+    <EditText
+        android:id="@+id/numeros_sus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/numeros"
+        android:textSize="10pt"
+        android:inputType="number"/>
+    <TextView
+        android:id="@+id/sexo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/sexos"
+        android:textSize="10pt"/>
+    <Spinner
+        android:id="@+id/tipo_sexo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/tipoSexo"
+        android:scrollbarSize="12pt">
+
+    </Spinner>
+
+
+
+    <Button
+        android:id="@+id/cadastrar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/cadastrar"
+        android:onClick="cadastraClick"/>
+
+</LinearLayout>

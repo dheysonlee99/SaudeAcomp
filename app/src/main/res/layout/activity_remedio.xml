@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ifpi.edu.br.saudeacomp.RemedioActivity"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Prescrição de  Remédio"
+        android:textSize="12pt"
+        android:layout_gravity="center_horizontal"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Remédio:"
+        android:textSize="10pt"/>
+    <EditText
+        android:id="@+id/nome_remedio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="10pt"
+        android:hint="Nome do Remédio"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Modo de uso:"
+        android:textSize="10pt"/>
+
+    <EditText
+        android:id="@+id/modo_uso"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="modo de Uso"
+        android:textSize="10pt"/>
+    <Button
+        android:id="@+id/add_remedio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Remedio"
+        android:textSize="10pt"
+        android:onClick="remedioClick"/>
+
+</LinearLayout>

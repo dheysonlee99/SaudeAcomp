@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ifpi.edu.br.saudeacomp.ExameActivity"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Agendar Exame"
+        android:textSize="12pt"
+        android:layout_gravity="center_horizontal"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Local do Exame:"
+        android:textSize="10pt"/>
+
+    <EditText
+        android:id="@+id/nome_clini_exame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="digite o local do exame:"
+        android:textSize="10pt"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Data:"
+        android:textSize="10pt"
+        />
+    <EditText
+        android:id="@+id/data_exame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="DD/MM/AAAA"
+        android:textSize="10pt"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tipo:"
+        android:textSize="10pt"/>
+
+    <Spinner
+        android:id="@+id/tipo_exame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/taxa"
+        android:scrollbarSize="12pt">
+    </Spinner>
+
+    <Spinner
+        android:id="@+id/status_exame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/status"
+        android:scrollbarSize="12pt"></Spinner>
+
+
+    <Button
+        android:id="@+id/agend_exame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Agendar Exame"
+        android:textSize="10pt"
+        android:onClick="exameClick"/>
+
+
+</LinearLayout>

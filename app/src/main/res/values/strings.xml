@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">SaudeAcomp</string>
+    <string name="titulo">Acompanhamento de Saúde</string>
+    <string name="nome">Nome do Paciente:</string>
+    <string name="nome_com">Nome Completo</string>
+    <string name="cart_sus">Numero do cartão do SUS:</string>
+    <string name="numeros">Apenas Numeros</string>
+    <string name="sexos">Sexo:</string>
+    <string name="cadastrar">Cadastrar</string>
+    <string name="cadastre">Cadastrar Paciente</string>
+    <string name="apagar">Apagar</string>
+
+    <string-array name="tipoSexo">
+        <item>Outro</item>
+        <item>Masculino</item>
+        <item>Feminino</item>
+    </string-array>
+
+    <string-array name="especialidades">
+        <item>Cardiologista</item>
+        <item>Urologista</item>
+        <item>Pediatra</item>
+        <item>Dermatologista</item>
+        <item>Neurologista</item>
+    </string-array>
+
+    <string-array name="status">
+        <item>Realizada</item>
+        <item>Não Realizada</item>
+    </string-array>
+
+    <string-array name="taxa">
+        <item>Glicemia</item>
+        <item>Colesterol</item>
+        <item>Ferritina</item>
+        <item>TGO</item>
+        <item>TGP</item>
+        <item>Hemoglobina</item>
+    </string-array>
+</resources>
