@@ -13,14 +13,18 @@ import ifpi.edu.br.saudeacomp.R;
 import ifpi.edu.br.saudeacomp.dao.PacienteDAO;
 import ifpi.edu.br.saudeacomp.modelo.Consulta;
 import ifpi.edu.br.saudeacomp.dao.ConsultaDAO;
+import ifpi.edu.br.saudeacomp.modelo.Paciente;
 
 public class ConsultaActivity extends AppCompatActivity {
+
+    ;
 
     private PacienteDAO ass;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consulta);
+
 
         ass = new PacienteDAO(this);
     }
@@ -29,6 +33,7 @@ public class ConsultaActivity extends AppCompatActivity {
     public void agendaClick(View elementoClicado){
 
         EditText editNome = (EditText)findViewById(R.id.nome_clinica);
+
         EditText editData = (EditText)findViewById(R.id.data_consulta);
         Spinner editEspecialidade = (Spinner)findViewById(R.id.especialidade);
         Spinner editStatus = (Spinner)findViewById(R.id.status_consulta);
@@ -39,6 +44,8 @@ public class ConsultaActivity extends AppCompatActivity {
         String status = editStatus.getSelectedItem().toString();
 
         Consulta consulta = new Consulta(nome,data,especialidade,status);
+
+
 
         ConsultaDAO dao = new ConsultaDAO(ass);
         dao.inserirConsulta(consulta);

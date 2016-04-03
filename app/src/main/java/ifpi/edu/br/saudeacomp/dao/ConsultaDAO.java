@@ -2,6 +2,7 @@ package ifpi.edu.br.saudeacomp.dao;
 
 import android.content.ContentValues;
 import android.database.Cursor;
+import android.os.Bundle;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,6 @@ public class ConsultaDAO  {
     public void inserirConsulta(Consulta consulta){
         ContentValues cv = new ContentValues();
         cv.put("nome", consulta.getNome());
-        //cv.put("paciente_id",getPaciente().getId());
         cv.put("data", consulta.getData());
         cv.put("especialidade", consulta.getEspecialidade());
         cv.put("status", consulta.getStatus());

@@ -124,6 +124,7 @@ public class SaudeActivity extends AppCompatActivity {
             public boolean onMenuItemClick(MenuItem item) {
                 Toast.makeText(SaudeActivity.this, "Vc clicou no agendar exame:", Toast.LENGTH_SHORT).show();
                 Intent irParaExame = new Intent(SaudeActivity.this, ExameActivity.class);
+
                 startActivity(irParaExame);
                 return false;
             }
