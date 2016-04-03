@@ -53,4 +53,13 @@ public class ExameDAO {
         ass.getWritableDatabase().delete("Exame", "id = ?", args);
     }
 
+    /*
+    public void atualizar(Exame exame){
+        String[] args = {String.valueOf(exame.getId())};
+        ContentValues cv = new ContentValues();
+        cv.put("status",exame.getResultado());
+        cv.put("resultado",exame.getStatus());
+        ass.getWritableDatabase().update("Exame",cv, "id = ?", args);
+    }*/
+
 }

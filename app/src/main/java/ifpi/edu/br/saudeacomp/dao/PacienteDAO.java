@@ -42,7 +42,8 @@ public class PacienteDAO extends SQLiteOpenHelper {
                 "nome VARCHAR (50), " +
                 "data VARCHAR (50), " +
                 "especialidade VARCHAR (50)," +
-                "status VARCHAR (50));";
+                "status VARCHAR (50)," +
+                "resultado VARCHAR (250));";
         db.execSQL(sql);
 
         sql = "CREATE TABLE Exame " +
@@ -51,7 +52,8 @@ public class PacienteDAO extends SQLiteOpenHelper {
                 "nome VARCHAR (50), " +
                 "data VARCHAR (50), " +
                 "tipo VARCHAR (50)," +
-                "status VARCHAR (50));";
+                "status VARCHAR (50)," +
+                "resultado VARCHAR (250));";
 
         db.execSQL(sql);
 
