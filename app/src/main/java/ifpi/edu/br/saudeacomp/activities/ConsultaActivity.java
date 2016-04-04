@@ -32,6 +32,7 @@ public class ConsultaActivity extends AppCompatActivity {
 
     public void agendaClick(View elementoClicado){
 
+
         EditText editNome = (EditText)findViewById(R.id.nome_clinica);
 
         EditText editData = (EditText)findViewById(R.id.data_consulta);

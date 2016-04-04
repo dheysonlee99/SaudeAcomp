@@ -65,9 +65,11 @@ public class ListaConsultaActivity extends AppCompatActivity {
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
-        MenuItem item1 = menu.add("Remover Consulta");
+        MenuItem item1 = menu.add("Mudar status");
+        MenuItem item2 = menu.add("Remover Consulta");
 
-        item1.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+
+        item2.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
 
             @Override
             public boolean onMenuItemClick(MenuItem item) {
