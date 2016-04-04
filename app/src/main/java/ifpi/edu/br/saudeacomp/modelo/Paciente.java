@@ -1,16 +1,24 @@
 package ifpi.edu.br.saudeacomp.modelo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by programador on 29/03/16.
  */
 public class Paciente {
+
+
     private int id;
     private String nome;
     private String susNumero;
     private String idade;
     private String sexo;
 
+    private List<Consulta> consultas;
+
     public Paciente(){
+        this.consultas = new ArrayList<>();
     }
     public Paciente(String nome,String susNumero,String idade, String sexo){
         this.nome = nome;
@@ -59,12 +67,24 @@ public class Paciente {
         this.sexo = sexo;
     }
 
+    public List<Consulta> getConsultas() {
+        return consultas;
+    }
+
+    public void setConsultas(List<Consulta> consultas) {
+        this.consultas = consultas;
+    }
+
+    public void addConsulta(Consulta consulta){
+        this.consultas.add(consulta);
+    }
+
     @Override
     public String toString() {
         return "Nome do Paciente: " +"\n"+
                 this.nome +"\n"+
                 "Cartao do Sus: "+
                 this.susNumero+"\n"+
-                "Sexo: "+ this.sexo + "  Idade: "+ this.idade + " id: " + this.id;
+                "Sexo: "+ this.sexo + "  Idade: "+ this.idade;
     }
 }
