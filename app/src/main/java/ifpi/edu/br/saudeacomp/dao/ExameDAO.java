@@ -14,10 +14,10 @@ import ifpi.edu.br.saudeacomp.modelo.Exame;
  */
 public class ExameDAO {
 
-    private PacienteDAO ass;
+    private DBHelper helper;
 
-    public ExameDAO(PacienteDAO ass){
-        this.ass = ass;
+    public ExameDAO(DBHelper helper) {
+        this.helper = helper;
     }
 
     public void inserirExame(Exame exame){
@@ -27,13 +27,13 @@ public class ExameDAO {
         cv.put("tipo",exame.getTipo());
         cv.put("Status",exame.getStatus());
 
-        ass.getWritableDatabase().insert("Exame", null, cv);
+        this.helper.getWritableDatabase().insert("Exame", null, cv);
     }
 
     public List<Exame> listar(){
         List<Exame> exames = new ArrayList<>();
         String sql = "SELECT * FROM Exame;";
-        Cursor c = ass.getWritableDatabase().rawQuery(sql,null);
+        Cursor c = this.helper.getWritableDatabase().rawQuery(sql,null);
         while (c.moveToNext()) {
             int id = c.getInt(c.getColumnIndex("id"));
             String nome = c.getString(c.getColumnIndex("nome"));
@@ -50,7 +50,7 @@ public class ExameDAO {
 
     public void remover(Exame exame){
         String[] args = {String.valueOf(exame.getId())};
-        ass.getWritableDatabase().delete("Exame", "id = ?", args);
+        this.helper.getWritableDatabase().delete("Exame", "id = ?", args);
     }
 
     /*

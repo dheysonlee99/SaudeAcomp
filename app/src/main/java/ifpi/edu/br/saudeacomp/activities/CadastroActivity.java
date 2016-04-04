@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import ifpi.edu.br.saudeacomp.R;
+import ifpi.edu.br.saudeacomp.dao.DBHelper;
 import ifpi.edu.br.saudeacomp.modelo.Paciente;
 import ifpi.edu.br.saudeacomp.dao.PacienteDAO;
 
@@ -36,7 +37,9 @@ public class CadastroActivity extends AppCompatActivity {
 
         Paciente paciente = new Paciente(nome, sus, idade, sexo);
 
-        PacienteDAO dao = new PacienteDAO(this);
+        DBHelper db = new DBHelper(this);
+
+        PacienteDAO dao = new PacienteDAO(db);
 
         dao.inserir(paciente);
 

@@ -6,7 +6,7 @@ package ifpi.edu.br.saudeacomp.modelo;
 public class Consulta {
 
     private int id;
-    private int paciente_id;
+    private int pacienteid;
     private String nome;
     private String data;
     private String especialidade;
@@ -14,6 +14,14 @@ public class Consulta {
     private String resultado;
 
     public Consulta(){}
+
+    public int getPacienteid() {
+        return pacienteid;
+    }
+
+    public void setPacienteid(int pacienteid) {
+        this.pacienteid = pacienteid;
+    }
 
     public Consulta(String nome, String data, String especialidade,String status){
         this.nome = nome;
@@ -30,13 +38,7 @@ public class Consulta {
         this.id = id;
     }
 
-    public int getPaciente_id() {
-        return paciente_id;
-    }
 
-    public void setPaciente_id(int paciente_id) {
-        this.paciente_id = paciente_id;
-    }
 
     public String getNome() {
         return nome;
@@ -82,6 +84,6 @@ public class Consulta {
     public String toString() {
         return "Local: "+ this.nome + "\n"+
                 "Especialidade: " + this.especialidade + "\n"+
-                "Data: " + this.data +"\n"+ this.status;
+                "Data: " + this.data +"\n"+ this.status+ "\n"+this.getPacienteid();
     }
 }

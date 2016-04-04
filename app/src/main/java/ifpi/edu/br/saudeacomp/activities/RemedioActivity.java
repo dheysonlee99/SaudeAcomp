@@ -8,19 +8,20 @@ import android.view.View;
 import android.widget.EditText;
 
 import ifpi.edu.br.saudeacomp.R;
+import ifpi.edu.br.saudeacomp.dao.DBHelper;
 import ifpi.edu.br.saudeacomp.dao.PacienteDAO;
 import ifpi.edu.br.saudeacomp.dao.RemedioDAO;
 import ifpi.edu.br.saudeacomp.modelo.Remedio;
 
 public class RemedioActivity extends AppCompatActivity {
 
-    private PacienteDAO ass;
+    private DBHelper db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_remedio);
 
-        ass = new PacienteDAO(this);
+        db = new DBHelper(this);
     }
 
     public void remedioClick(View elementoClicado){
@@ -33,7 +34,7 @@ public class RemedioActivity extends AppCompatActivity {
 
         Remedio remedio = new Remedio(nome,modoUso);
 
-        RemedioDAO dao = new RemedioDAO(ass);
+        RemedioDAO dao = new RemedioDAO(db);
         dao.inserirRemedio(remedio);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);

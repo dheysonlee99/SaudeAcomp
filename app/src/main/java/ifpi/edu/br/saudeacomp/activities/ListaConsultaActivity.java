@@ -10,25 +10,32 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import ifpi.edu.br.saudeacomp.R;
+import ifpi.edu.br.saudeacomp.dao.DBHelper;
 import ifpi.edu.br.saudeacomp.dao.PacienteDAO;
 import ifpi.edu.br.saudeacomp.dao.ConsultaDAO;
 import ifpi.edu.br.saudeacomp.modelo.Consulta;
+import ifpi.edu.br.saudeacomp.modelo.Paciente;
 
 
 public class ListaConsultaActivity extends AppCompatActivity {
 
     private Consulta consulta;
-    private PacienteDAO ass;
+    private DBHelper db;
+    int paciente_id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_consulta);
 
-        ass = new PacienteDAO(this);
+        paciente_id = getIntent().getIntExtra("paciente_id", 0);
+
+        db = new DBHelper(this);
 
         final ListView listConsulta = (ListView) findViewById(R.id.list_consulta);
         registerForContextMenu(listConsulta);
@@ -54,8 +61,16 @@ public class ListaConsultaActivity extends AppCompatActivity {
 
     private void recarregarDados() {
         ListView listConsultas = (ListView) findViewById(R.id.list_consulta);
-        ConsultaDAO dao = new ConsultaDAO(ass);
-        List<Consulta> consultas = dao.listar();
+
+        Toast.makeText(ListaConsultaActivity.this, "foi", Toast.LENGTH_SHORT).show();
+
+        ConsultaDAO dao = new ConsultaDAO(db);
+
+        //List<Consulta> consultas = dao.listar();
+        Paciente paciente = new Paciente();
+        paciente.setId(paciente_id);
+
+        List<Consulta> consultas = dao.consultasPorPaciente(paciente); //dao.listar();
 
         ArrayAdapter<Consulta> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, consultas);
 
@@ -76,12 +91,12 @@ public class ListaConsultaActivity extends AppCompatActivity {
 
 
                 AlertDialog.Builder c = new AlertDialog.Builder(ListaConsultaActivity.this);
-                ass = new PacienteDAO(ListaConsultaActivity.this);
+                db = new DBHelper(ListaConsultaActivity.this);
                 c.setMessage("Deseja Apagar esta consulta?");
                 c.setPositiveButton("SIM", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        ConsultaDAO dao = new ConsultaDAO(ass);
+                        ConsultaDAO dao = new ConsultaDAO(db);
                         dao.remover(consulta);
                         recarregarDados();
                     }

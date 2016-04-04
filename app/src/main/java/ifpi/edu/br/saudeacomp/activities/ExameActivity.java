@@ -9,19 +9,20 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import ifpi.edu.br.saudeacomp.R;
+import ifpi.edu.br.saudeacomp.dao.DBHelper;
 import ifpi.edu.br.saudeacomp.dao.ExameDAO;
 import ifpi.edu.br.saudeacomp.dao.PacienteDAO;
 import ifpi.edu.br.saudeacomp.modelo.Exame;
 
 public class ExameActivity extends AppCompatActivity {
 
-    private PacienteDAO ass;
+    private DBHelper db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exame);
 
-        ass = new PacienteDAO(this);
+        db = new DBHelper(this);
     }
 
 
@@ -40,7 +41,7 @@ public class ExameActivity extends AppCompatActivity {
 
         Exame exame = new Exame(nome,data,tipo,status);
 
-        ExameDAO dao = new ExameDAO(ass);
+        ExameDAO dao = new ExameDAO(db);
         dao.inserirExame(exame);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);

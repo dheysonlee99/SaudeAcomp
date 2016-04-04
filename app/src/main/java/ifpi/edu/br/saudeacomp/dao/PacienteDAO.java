@@ -14,65 +14,14 @@ import ifpi.edu.br.saudeacomp.modelo.Paciente;
 /**
  * Created by programador on 29/03/16.
  */
-public class PacienteDAO extends SQLiteOpenHelper {
+public class PacienteDAO {
 
-    public PacienteDAO(Context context) {
+    private DBHelper helper;
 
-        super(context,"Pacientes.bd", null, 6);
+    public PacienteDAO(DBHelper helper) {
+        this.helper = helper;
     }
 
-
-
-    @Override
-    public void onCreate(SQLiteDatabase db) {
-
-        String sql = "CREATE TABLE Paciente " +
-                "(id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "nome VARCHAR (50), " +
-                "numeroSus VARCHAR (50), " +
-                "sexo VARCHAR (50)," +
-                "idade INTEGER );";
-        db.execSQL(sql);
-
-        sql = "CREATE TABLE Consulta " +
-                "(id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "paciente_id INTEGER, " +
-                "nome VARCHAR (50), " +
-                "data VARCHAR (50), " +
-                "especialidade VARCHAR (50)," +
-                "status VARCHAR (50)," +
-                "resultado VARCHAR (250));";
-        db.execSQL(sql);
-
-        sql = "CREATE TABLE Exame " +
-                "(id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "paciente_id INTEGER, " +
-                "nome VARCHAR (50), " +
-                "data VARCHAR (50), " +
-                "tipo VARCHAR (50)," +
-                "status VARCHAR (50)," +
-                "resultado VARCHAR (250));";
-
-        db.execSQL(sql);
-
-        sql = "CREATE TABLE Remedio " +
-                "(id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "paciente_id INTEGER, " +
-                "nome VARCHAR (50), " +
-                "modoUso VARCHAR (250));";
-        db.execSQL(sql);
-
-
-    }
-
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
-        String sql = "DROP TABLE IF EXISTS Paciente;";
-        db.execSQL(sql);
-        onCreate(db);
-
-    }
 
     public void inserir(Paciente paciente) {
         ContentValues cv = new ContentValues();
@@ -81,14 +30,15 @@ public class PacienteDAO extends SQLiteOpenHelper {
         cv.put("idade", paciente.getIdade());
         cv.put("sexo", paciente.getSexo());
 
-        getWritableDatabase().insert("Paciente", null, cv);
+        this.helper.getWritableDatabase().insert("Paciente", null, cv);
 
     }
 
     public List<Paciente> lista() {
         List<Paciente> pacientes = new ArrayList<>();
         String sql = "SELECT * FROM Paciente;";
-        Cursor c = getReadableDatabase().rawQuery(sql, null);
+        Cursor c = this.helper.getReadableDatabase().rawQuery(sql, null);
+        ConsultaDAO consultaDAO = new ConsultaDAO(this.helper);
 
         while (c.moveToNext()) {
             int id = c.getInt(c.getColumnIndex("id"));
@@ -98,6 +48,11 @@ public class PacienteDAO extends SQLiteOpenHelper {
             String sexo = c.getString(c.getColumnIndex("sexo"));
             Paciente p = new Paciente(nome, sus,idade, sexo);
             p.setId(id);
+
+            //Pegar as consultas deste paciente
+            p.setConsultas(consultaDAO.consultasPorPaciente(p));
+
+
             pacientes.add(p);
         }
 
@@ -107,6 +62,6 @@ public class PacienteDAO extends SQLiteOpenHelper {
     public void remover(Paciente paciente) {
 
         String[] args = {String.valueOf(paciente.getId())};
-        getWritableDatabase().delete("Paciente", "id = ?", args);
+        this.helper.getWritableDatabase().delete("Paciente", "id = ?", args);
     }
 }

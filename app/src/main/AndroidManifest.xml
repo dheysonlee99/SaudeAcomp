@@ -17,7 +17,8 @@
         </activity>
         <activity android:name=".activities.CadastroActivity"
             android:parentActivityName=".activities.SaudeActivity" />
-        <activity android:name=".activities.ConsultaActivity" />
+        <activity android:name=".activities.ConsultaActivity"
+            android:parentActivityName=".activities.SaudeActivity"/>
         <activity android:name=".activities.RemedioActivity" />
         <activity android:name=".activities.ListaConsultaActivity" />
         <activity android:name=".activities.ListaRemedioActivity" />

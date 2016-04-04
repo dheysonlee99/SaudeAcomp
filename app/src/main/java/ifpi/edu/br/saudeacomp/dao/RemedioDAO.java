@@ -13,24 +13,23 @@ import ifpi.edu.br.saudeacomp.modelo.Remedio;
  */
 public class RemedioDAO {
 
-    private PacienteDAO ass;
+    private DBHelper helper;
 
-    public RemedioDAO(PacienteDAO ass) {
-        this.ass = ass;
+    public RemedioDAO(DBHelper helper) {
+        this.helper = helper;
     }
-
     public void inserirRemedio(Remedio remedio){
         ContentValues cv = new ContentValues();
         cv.put("nome", remedio.getNome());
         cv.put("modoUso", remedio.getModoUso());
 
-        ass.getWritableDatabase().insert("Remedio", null, cv);
+        this.helper.getWritableDatabase().insert("Remedio", null, cv);
     }
 
     public List<Remedio> listar() {
         List<Remedio> remedios = new ArrayList<>();
         String sql = "SELECT * FROM Remedio;";
-        Cursor c = ass.getReadableDatabase().rawQuery(sql, null);
+        Cursor c = this.helper.getReadableDatabase().rawQuery(sql, null);
 
         while (c.moveToNext()) {
             int id = c.getInt(c.getColumnIndex("id"));
@@ -49,7 +48,7 @@ public class RemedioDAO {
     public void remover(Remedio remedio){
 
         String[] args = {String.valueOf(remedio.getId())};
-        ass.getWritableDatabase().delete("Remedio", "id = ?", args);
+        this.helper.getWritableDatabase().delete("Remedio", "id = ?", args);
     }
 
 

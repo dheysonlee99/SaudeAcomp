@@ -14,6 +14,7 @@ import android.widget.ListView;
 import java.util.List;
 
 import ifpi.edu.br.saudeacomp.R;
+import ifpi.edu.br.saudeacomp.dao.DBHelper;
 import ifpi.edu.br.saudeacomp.dao.PacienteDAO;
 import ifpi.edu.br.saudeacomp.dao.RemedioDAO;
 import ifpi.edu.br.saudeacomp.modelo.Remedio;
@@ -21,14 +22,14 @@ import ifpi.edu.br.saudeacomp.modelo.Remedio;
 public class ListaRemedioActivity extends AppCompatActivity {
 
     private Remedio remedio;
-    private PacienteDAO ass;
+    private DBHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_remedio);
 
-        ass = new PacienteDAO(this);
+        db = new DBHelper(this);
 
         final ListView listRemedio = (ListView) findViewById(R.id.list_remedios);
         registerForContextMenu(listRemedio);
@@ -52,7 +53,7 @@ public class ListaRemedioActivity extends AppCompatActivity {
 
     public void recarregarDados(){
         ListView listRemedios = (ListView)findViewById(R.id.list_remedios);
-        RemedioDAO dao = new RemedioDAO(ass);
+        RemedioDAO dao = new RemedioDAO(db);
         List<Remedio> remedios = dao.listar();
 
         ArrayAdapter<Remedio> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, remedios);
@@ -72,12 +73,12 @@ public class ListaRemedioActivity extends AppCompatActivity {
 
 
                 AlertDialog.Builder c = new AlertDialog.Builder(ListaRemedioActivity.this);
-                ass = new PacienteDAO(ListaRemedioActivity.this);
+                db = new DBHelper(ListaRemedioActivity.this);
                 c.setMessage("Deseja Apagar este remedio?");
                 c.setPositiveButton("SIM", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        RemedioDAO dao = new RemedioDAO(ass);
+                        RemedioDAO dao = new RemedioDAO(db);
                         dao.remover(remedio);
                         recarregarDados();
                     }

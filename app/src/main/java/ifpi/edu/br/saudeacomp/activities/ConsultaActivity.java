@@ -7,9 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 
 import ifpi.edu.br.saudeacomp.R;
+import ifpi.edu.br.saudeacomp.dao.DBHelper;
 import ifpi.edu.br.saudeacomp.dao.PacienteDAO;
 import ifpi.edu.br.saudeacomp.modelo.Consulta;
 import ifpi.edu.br.saudeacomp.dao.ConsultaDAO;
@@ -17,16 +19,18 @@ import ifpi.edu.br.saudeacomp.modelo.Paciente;
 
 public class ConsultaActivity extends AppCompatActivity {
 
-    ;
 
-    private PacienteDAO ass;
+    int paciente_id;
+    private DBHelper db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consulta);
 
+        paciente_id = getIntent().getIntExtra("paciente_id", 0);
+        Toast.makeText(ConsultaActivity.this, "ID Recebido: " + paciente_id, Toast.LENGTH_SHORT).show();
 
-        ass = new PacienteDAO(this);
+        db = new DBHelper(this);
     }
 
 
@@ -46,10 +50,10 @@ public class ConsultaActivity extends AppCompatActivity {
 
         Consulta consulta = new Consulta(nome,data,especialidade,status);
 
-
-
-        ConsultaDAO dao = new ConsultaDAO(ass);
-        dao.inserirConsulta(consulta);
+        ConsultaDAO dao = new ConsultaDAO(db);
+        Paciente paciente = new Paciente();
+        paciente.setId(paciente_id);
+        dao.inserirConsulta(consulta,paciente);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("Consulta agendada ");

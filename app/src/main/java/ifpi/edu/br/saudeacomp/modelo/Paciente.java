@@ -1,12 +1,13 @@
 package ifpi.edu.br.saudeacomp.modelo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by programador on 29/03/16.
  */
-public class Paciente {
+public class Paciente implements Serializable {
 
 
     private int id;
@@ -18,6 +19,7 @@ public class Paciente {
     private List<Consulta> consultas;
 
     public Paciente(){
+
         this.consultas = new ArrayList<>();
     }
     public Paciente(String nome,String susNumero,String idade, String sexo){

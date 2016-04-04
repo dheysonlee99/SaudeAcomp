@@ -18,6 +18,7 @@ import android.widget.Toast;
 import java.util.List;
 
 import ifpi.edu.br.saudeacomp.R;
+import ifpi.edu.br.saudeacomp.dao.DBHelper;
 import ifpi.edu.br.saudeacomp.modelo.Paciente;
 
 import ifpi.edu.br.saudeacomp.dao.PacienteDAO;
@@ -87,7 +88,8 @@ public class SaudeActivity extends AppCompatActivity {
 
     private void recarregarDados() {
         ListView listPacientes = (ListView) findViewById(R.id.list_pacientes);
-        PacienteDAO dao = new PacienteDAO(this);
+        DBHelper db = new DBHelper(this);
+        PacienteDAO dao = new PacienteDAO(db);
         List<Paciente> pacientes = dao.lista();
 
         ArrayAdapter<Paciente> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, pacientes);
@@ -99,20 +101,21 @@ public class SaudeActivity extends AppCompatActivity {
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
 
         super.onCreateContextMenu(menu, v, menuInfo);
-        MenuItem item = menu.add("Agendar Consulta");
+        MenuItem agendarConsulta = menu.add("Agendar Consulta");
         MenuItem item2 = menu.add("Agendar Exame");
         MenuItem item3 = menu.add("Adicionar Remedio");
-        MenuItem item4 = menu.add("Ver Consultas");
+        MenuItem verconsultas = menu.add("Ver Consultas");
         MenuItem item5 = menu.add("Ver Exames");
         MenuItem item6 = menu.add("Ver Remédios");
         MenuItem item7 = menu.add("Apagar Paciente");
 
 
-        item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+        agendarConsulta.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 Toast.makeText(SaudeActivity.this, "Vc clicou no agendar consulta:", Toast.LENGTH_SHORT).show();
                 Intent irParaConsult = new Intent(SaudeActivity.this, ConsultaActivity.class);
+                irParaConsult.putExtra("paciente_id", paciente.getId());
                 startActivity(irParaConsult);
                 return false;
             }
@@ -140,12 +143,13 @@ public class SaudeActivity extends AppCompatActivity {
             }
         });
 
-        item4.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+        verconsultas.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
 
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 Intent irListaConsultas = new Intent(SaudeActivity.this, ListaConsultaActivity.class);
                 startActivity(irListaConsultas);
+                irListaConsultas.putExtra("paciente_id",paciente.getId());
                 return false;
             }
         });
@@ -184,7 +188,8 @@ public class SaudeActivity extends AppCompatActivity {
                 b.setPositiveButton("SIM", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        PacienteDAO dao = new PacienteDAO(SaudeActivity.this);
+                        DBHelper db = new DBHelper(SaudeActivity.this);
+                        PacienteDAO dao = new PacienteDAO(db);
                         dao.remover(paciente);
                         recarregarDados();
                         Toast.makeText(SaudeActivity.this, "Paciente removido com sucesso", Toast.LENGTH_SHORT).show();

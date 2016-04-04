@@ -15,6 +15,7 @@ import java.util.List;
 
 
 import ifpi.edu.br.saudeacomp.R;
+import ifpi.edu.br.saudeacomp.dao.DBHelper;
 import ifpi.edu.br.saudeacomp.dao.ExameDAO;
 import ifpi.edu.br.saudeacomp.dao.PacienteDAO;
 import ifpi.edu.br.saudeacomp.modelo.Exame;
@@ -22,14 +23,14 @@ import ifpi.edu.br.saudeacomp.modelo.Exame;
 public class ListaExameActivity extends AppCompatActivity {
 
     private Exame exame;
-    private PacienteDAO ass;
+    private DBHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_exame);
 
-        ass = new PacienteDAO(this);
+        db = new DBHelper(this);
 
         final ListView listExame = (ListView) findViewById(R.id.list_exames);
         registerForContextMenu(listExame);
@@ -52,7 +53,7 @@ public class ListaExameActivity extends AppCompatActivity {
 
     public void recarregarDados(){
         ListView listExames = (ListView)findViewById(R.id.list_exames);
-        ExameDAO dao = new ExameDAO(ass);
+        ExameDAO dao = new ExameDAO(db);
         List<Exame> exames  = dao.listar();
         ArrayAdapter<Exame> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, exames);
 
@@ -72,12 +73,12 @@ public class ListaExameActivity extends AppCompatActivity {
 
 
                 AlertDialog.Builder c = new AlertDialog.Builder(ListaExameActivity.this);
-                ass = new PacienteDAO(ListaExameActivity.this);
+                db = new DBHelper(ListaExameActivity.this);
                 c.setMessage("Deseja Apagar este exame?");
                 c.setPositiveButton("SIM", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        ExameDAO dao = new ExameDAO(ass);
+                        ExameDAO dao = new ExameDAO(db);
                         dao.remover(exame);
                         recarregarDados();
                     }
