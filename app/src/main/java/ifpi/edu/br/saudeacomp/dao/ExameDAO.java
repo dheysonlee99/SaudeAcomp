@@ -6,7 +6,7 @@ import android.database.Cursor;
 import java.util.ArrayList;
 import java.util.List;
 
-import ifpi.edu.br.saudeacomp.modelo.Consulta;
+import ifpi.edu.br.saudeacomp.modelo.Exame;
 import ifpi.edu.br.saudeacomp.modelo.Exame;
 import ifpi.edu.br.saudeacomp.modelo.Paciente;
 
@@ -39,6 +39,28 @@ public class ExameDAO {
         while (c.moveToNext()) {
             int id = c.getInt(c.getColumnIndex("id"));
             int pid = c.getInt((c.getColumnIndex("paciente_id")));
+            String nome = c.getString(c.getColumnIndex("nome"));
+            String data = c.getString(c.getColumnIndex("data"));
+            String tipo = c.getString(c.getColumnIndex("tipo"));
+            String status = c.getString(c.getColumnIndex("status"));
+            Exame exame = new Exame(nome, data,tipo, status);
+            exame.setId(id);
+            exame.setPacienteid(pid);
+            exames.add(exame);
+        }
+
+        return exames;
+    }
+
+    public List<Exame> examesPorPaciente(Paciente p) {
+        List<Exame> exames = new ArrayList<>();
+        String[] args = {String.valueOf(p.getId())};
+        String sql = "SELECT * FROM Exame WHERE paciente_id = ?;";
+        Cursor c = this.helper.getReadableDatabase().rawQuery(sql, args);
+
+        while (c.moveToNext()) {
+            int id = c.getInt(c.getColumnIndex("id"));
+            int pid = c.getInt(c.getColumnIndex("paciente_id"));
             String nome = c.getString(c.getColumnIndex("nome"));
             String data = c.getString(c.getColumnIndex("data"));
             String tipo = c.getString(c.getColumnIndex("tipo"));

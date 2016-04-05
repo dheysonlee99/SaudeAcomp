@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -19,11 +20,13 @@ import ifpi.edu.br.saudeacomp.dao.DBHelper;
 import ifpi.edu.br.saudeacomp.dao.ExameDAO;
 import ifpi.edu.br.saudeacomp.dao.PacienteDAO;
 import ifpi.edu.br.saudeacomp.modelo.Exame;
+import ifpi.edu.br.saudeacomp.modelo.Paciente;
 
 public class ListaExameActivity extends AppCompatActivity {
 
     private Exame exame;
     private DBHelper db;
+    int paciente_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +34,9 @@ public class ListaExameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_lista_exame);
 
         db = new DBHelper(this);
+
+        paciente_id = getIntent().getIntExtra("paciente_id", 0);
+        Toast.makeText(ListaExameActivity.this, "ID Recebido: " + paciente_id, Toast.LENGTH_SHORT).show();
 
         final ListView listExame = (ListView) findViewById(R.id.list_exames);
         registerForContextMenu(listExame);
@@ -53,8 +59,14 @@ public class ListaExameActivity extends AppCompatActivity {
 
     public void recarregarDados(){
         ListView listExames = (ListView)findViewById(R.id.list_exames);
+
+
         ExameDAO dao = new ExameDAO(db);
-        List<Exame> exames  = dao.listar();
+
+        Paciente paciente = new Paciente();
+        paciente.setId(paciente_id);
+        //List<Exame> exames  = dao.listar();
+        List<Exame> exames = dao.examesPorPaciente(paciente);
         ArrayAdapter<Exame> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, exames);
 
         listExames.setAdapter(adapter);

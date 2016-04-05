@@ -47,7 +47,25 @@ public class RemedioDAO {
         return remedios;
     }
 
+    public List<Remedio> remediosPorPaciente(Paciente p) {
+        List<Remedio> remedios = new ArrayList<>();
+        String[] args = {String.valueOf(p.getId())};
+        String sql = "SELECT * FROM Remedio WHERE paciente_id = ?;";
+        Cursor c = this.helper.getReadableDatabase().rawQuery(sql, args);
 
+        while (c.moveToNext()) {
+            int id = c.getInt(c.getColumnIndex("id"));
+            int pid = c.getInt(c.getColumnIndex("paciente_id"));
+            String nome = c.getString(c.getColumnIndex("nome"));
+            String modoUso = c.getString(c.getColumnIndex("modoUso"));
+            Remedio remedio = new Remedio(nome,modoUso);
+            remedio.setId(id);
+            remedio.setPacienteid(pid);
+            remedios.add(remedio);
+        }
+
+        return remedios;
+    }
 
     public void remover(Remedio remedio){
 

@@ -26,7 +26,7 @@
 
     <string-array name="status">
         <item>Realizada</item>
-        <item>Não Realizada</item>
+        <item>Nao Realizada</item>
     </string-array>
 
     <string-array name="taxa">
@@ -36,5 +36,9 @@
         <item>TGO</item>
         <item>TGP</item>
         <item>Hemoglobina</item>
+    </string-array>
+
+    <string-array name="mudastatus">
+        <item>Realizada</item>
     </string-array>
 </resources>

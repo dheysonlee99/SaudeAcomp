@@ -2,6 +2,7 @@ package ifpi.edu.br.saudeacomp.activities;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -21,6 +22,7 @@ import ifpi.edu.br.saudeacomp.dao.PacienteDAO;
 import ifpi.edu.br.saudeacomp.dao.ConsultaDAO;
 import ifpi.edu.br.saudeacomp.modelo.Consulta;
 import ifpi.edu.br.saudeacomp.modelo.Paciente;
+import ifpi.edu.br.saudeacomp.modelo.Remedio;
 
 
 public class ListaConsultaActivity extends AppCompatActivity {
@@ -81,7 +83,43 @@ public class ListaConsultaActivity extends AppCompatActivity {
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
-        MenuItem mudarStatus = menu.add("Mudar status");
+        if(consulta.getStatus().equals("Nao Realizada")){
+            MenuItem mudarStatus = menu.add("Mudar status");
+
+            mudarStatus.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+
+                @Override
+                public boolean onMenuItemClick(MenuItem item) {
+                    Intent mudarStatus = new Intent(ListaConsultaActivity.this,ConsultaStatusActivity.class);
+                    mudarStatus.putExtra("consulta_id",consulta.getId());
+                    startActivity(mudarStatus);
+                    return false;
+                }
+            });
+
+
+        }
+        else if (consulta.getStatus().equals("Realizada")){
+            MenuItem addExame = menu.add("Adicionar Exame");
+            /*addExame.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener(){
+                @Override
+                public boolean onMenuItemClick(MenuItem item) {
+                    Intent addExame = new Intent(ListaConsultaActivity.this,ExameActivity.class);
+                    addExame.putExtra("paciente_id",paciente_id);
+                    return false;
+                }
+            });*/
+            MenuItem addRemedio = menu.add("Adicionar Remedio");
+            /*addRemedio.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener(){
+                @Override
+                public boolean onMenuItemClick(MenuItem item) {
+                    Intent addRemedio = new Intent(ListaConsultaActivity.this, RemedioActivity.class);
+                    addRemedio.putExtra("paciente_id",paciente_id);
+                    return false;
+                }
+            });*/
+        }
+
         MenuItem removerConsulta = menu.add("Remover Consulta");
 
 

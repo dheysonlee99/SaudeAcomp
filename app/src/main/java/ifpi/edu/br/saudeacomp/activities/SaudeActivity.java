@@ -101,6 +101,7 @@ public class SaudeActivity extends AppCompatActivity {
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
 
         super.onCreateContextMenu(menu, v, menuInfo);
+        //MenuItem addPatologia = menu.add("Adicionar Patologia");
         MenuItem agendarConsulta = menu.add("Agendar Consulta");
         MenuItem agendarExame = menu.add("Agendar Exame");
         MenuItem addRemedio = menu.add("Adicionar Remedio");
@@ -172,6 +173,7 @@ public class SaudeActivity extends AppCompatActivity {
             public boolean onMenuItemClick(MenuItem item) {
                 Toast.makeText(SaudeActivity.this, "Vc clicou na listar Remedios", Toast.LENGTH_SHORT).show();
                 Intent irListaRemedios = new Intent(SaudeActivity.this, ListaRemedioActivity.class);
+                irListaRemedios.putExtra("paciente_id",paciente.getId());
                 startActivity(irListaRemedios);
                 return false;
             }

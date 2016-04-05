@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -17,12 +18,14 @@ import ifpi.edu.br.saudeacomp.R;
 import ifpi.edu.br.saudeacomp.dao.DBHelper;
 import ifpi.edu.br.saudeacomp.dao.PacienteDAO;
 import ifpi.edu.br.saudeacomp.dao.RemedioDAO;
+import ifpi.edu.br.saudeacomp.modelo.Paciente;
 import ifpi.edu.br.saudeacomp.modelo.Remedio;
 
 public class ListaRemedioActivity extends AppCompatActivity {
 
     private Remedio remedio;
     private DBHelper db;
+    int paciente_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +33,9 @@ public class ListaRemedioActivity extends AppCompatActivity {
         setContentView(R.layout.activity_lista_remedio);
 
         db = new DBHelper(this);
+
+        paciente_id = getIntent().getIntExtra("paciente_id", 0);
+        Toast.makeText(ListaRemedioActivity.this, "ID Recebido: " + paciente_id, Toast.LENGTH_SHORT).show();
 
         final ListView listRemedio = (ListView) findViewById(R.id.list_remedios);
         registerForContextMenu(listRemedio);
@@ -54,8 +60,12 @@ public class ListaRemedioActivity extends AppCompatActivity {
     public void recarregarDados(){
         ListView listRemedios = (ListView)findViewById(R.id.list_remedios);
         RemedioDAO dao = new RemedioDAO(db);
-        List<Remedio> remedios = dao.listar();
 
+        Paciente paciente = new Paciente();
+        paciente.setId(paciente_id);
+        //List<Remedio> remedios = dao.listar();
+
+        List<Remedio> remedios = dao.remediosPorPaciente(paciente);
         ArrayAdapter<Remedio> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, remedios);
 
         listRemedios.setAdapter(adapter);

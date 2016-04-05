@@ -6,13 +6,12 @@ package ifpi.edu.br.saudeacomp.modelo;
 public class Exame {
 
     private int id;
+    private int pacienteid;
     private String nomeLocal;
     private String data;
     private String tipo;
     private String status;
     private String resultado;
-
-    private int pacienteid;
 
     public Exame(){
     }
@@ -26,7 +25,6 @@ public class Exame {
     public int getId() {
         return id;
     }
-
 
     public void setId(int id) {
         this.id = id;
@@ -84,7 +82,7 @@ public class Exame {
     public String toString() {
         return "Local: " +"\n"+ this.nomeLocal + "\n"+
                 "Tipo: "+ this.tipo +"\n"+
-                "Data: " + this.data +"\n"+ this.status+ "\n"+this.getPacienteid();
+                "Data: " + this.data +"\n"+ this.status + this.getPacienteid();
     }
 }
 
