@@ -69,11 +69,11 @@ public class ListaConsultaActivity extends AppCompatActivity {
 
         ConsultaDAO dao = new ConsultaDAO(db);
 
-        //List<Consulta> consultas = dao.listar();
+
         Paciente paciente = new Paciente();
         paciente.setId(paciente_id);
-
-        List<Consulta> consultas = dao.consultasPorPaciente(paciente); //dao.listar();
+        // lista consultas por paciente
+        List<Consulta> consultas = dao.consultasPorPaciente(paciente);
 
         ArrayAdapter<Consulta> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, consultas);
 
@@ -84,7 +84,7 @@ public class ListaConsultaActivity extends AppCompatActivity {
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
         if(consulta.getStatus().equals("Nao Realizada")){
-            MenuItem mudarStatus = menu.add("Mudar status");
+            MenuItem mudarStatus = menu.add("Marcar como Realizada");
 
             mudarStatus.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
 
@@ -100,24 +100,27 @@ public class ListaConsultaActivity extends AppCompatActivity {
 
         }
         else if (consulta.getStatus().equals("Realizada")){
-            MenuItem addExame = menu.add("Adicionar Exame");
-            /*addExame.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener(){
+            MenuItem addRemedio = menu.add("Adicionar Remedio");
+            MenuItem addExame = menu.add("marcar exame");
+            consulta.setPacienteid(paciente_id);
+            addExame.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener(){
                 @Override
                 public boolean onMenuItemClick(MenuItem item) {
                     Intent addExame = new Intent(ListaConsultaActivity.this,ExameActivity.class);
                     addExame.putExtra("paciente_id",paciente_id);
+                    startActivity(addExame);
                     return false;
                 }
-            });*/
-            MenuItem addRemedio = menu.add("Adicionar Remedio");
-            /*addRemedio.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener(){
+            });
+            addRemedio.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener(){
                 @Override
                 public boolean onMenuItemClick(MenuItem item) {
                     Intent addRemedio = new Intent(ListaConsultaActivity.this, RemedioActivity.class);
                     addRemedio.putExtra("paciente_id",paciente_id);
+                    startActivity(addRemedio);
                     return false;
                 }
-            });*/
+            });
         }
 
         MenuItem removerConsulta = menu.add("Remover Consulta");

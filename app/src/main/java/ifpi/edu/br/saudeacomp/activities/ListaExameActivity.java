@@ -75,10 +75,11 @@ public class ListaExameActivity extends AppCompatActivity {
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
-        MenuItem item1 = menu.add("Dar resultado");
-        MenuItem item2 = menu.add("Remover Exame");
+        // MenuItem resultado = menu.add("Dar resultado");
+        //MenuItem listarExameTipo = menu.add("Listar Exames por tipo");
+        MenuItem removerExame = menu.add("Remover Exame");
 
-        item2.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+        removerExame.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
 
             @Override
             public boolean onMenuItemClick(MenuItem item) {

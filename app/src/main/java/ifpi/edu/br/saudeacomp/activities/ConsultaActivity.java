@@ -20,12 +20,15 @@ import ifpi.edu.br.saudeacomp.modelo.Paciente;
 public class ConsultaActivity extends AppCompatActivity {
 
 
-    int paciente_id;
+    private int paciente_id;
     private DBHelper db;
+    private EditText  data;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consulta);
+
+        data = (EditText)findViewById(R.id.data_consulta);
 
         paciente_id = getIntent().getIntExtra("paciente_id", 0);
         Toast.makeText(ConsultaActivity.this, "ID Recebido: " + paciente_id, Toast.LENGTH_SHORT).show();

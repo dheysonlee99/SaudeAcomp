@@ -1,9 +1,11 @@
 package ifpi.edu.br.saudeacomp.modelo;
 
+import java.io.Serializable;
+
 /**
  * Created by programador on 30/03/16.
  */
-public class Consulta {
+public class Consulta implements Serializable {
 
     private int id;
     private int pacienteid;

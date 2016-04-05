@@ -40,10 +40,11 @@
         android:textSize="7pt"/>
     <Button
         android:id="@+id/add_remedio"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add Remedio"
         android:textSize="7pt"
-        android:onClick="remedioClick"/>
+        android:onClick="remedioClick"
+        android:layout_gravity="center_horizontal"/>
 
 </LinearLayout>

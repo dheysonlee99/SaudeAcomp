@@ -6,6 +6,7 @@ package ifpi.edu.br.saudeacomp.modelo;
 public class Patologia {
 
     private int id;
+    private int pacienteid;
     private String nome;
 
     public Patologia(){
@@ -20,6 +21,14 @@ public class Patologia {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getPacienteid() {
+        return pacienteid;
+    }
+
+    public void setPacienteid(int pacienteid) {
+        this.pacienteid = pacienteid;
     }
 
     public String getNome() {

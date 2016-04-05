@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ifpi.edu.br.saudeacomp.modelo.Exame;
-import ifpi.edu.br.saudeacomp.modelo.Exame;
 import ifpi.edu.br.saudeacomp.modelo.Paciente;
 
 /**
@@ -27,7 +26,7 @@ public class ExameDAO {
         cv.put("data", exame.getData());
         cv.put("paciente_id", paciente.getId());
         cv.put("tipo",exame.getTipo());
-        cv.put("Status",exame.getStatus());
+        cv.put("status",exame.getStatus());
 
         this.helper.getWritableDatabase().insert("Exame", null, cv);
     }
@@ -79,11 +78,33 @@ public class ExameDAO {
         this.helper.getWritableDatabase().delete("Exame", "id = ?", args);
     }
 
+    /*public List<Exame> examesPorTipo(Paciente p,Exame e) {
+        List<Exame> exames = new ArrayList<>();
+        String[] args = {String.valueOf(p.getId()),String.valueOf(e.getTipo())};
+        String sql = "SELECT * FROM Exame WHERE paciente_id = p.getId() AND tipo = e.getTipo();";
+        Cursor c = this.helper.getReadableDatabase().rawQuery(sql, null);
+
+        while (c.moveToNext()) {
+            int id = c.getInt(c.getColumnIndex("id"));
+            int pid = c.getInt(c.getColumnIndex("paciente_id"));
+            String nome = c.getString(c.getColumnIndex("nome"));
+            String data = c.getString(c.getColumnIndex("data"));
+            String tipo = c.getString(c.getColumnIndex("tipo"));
+            String statuss = c.getString(c.getColumnIndex("status"));
+            Exame exame = new Exame(nome, data,tipo, status);
+            exame.setId(id);
+            exame.setPacienteid(pid);
+            exames.add(exame);
+        }
+
+        return exames;
+    }*/
+
     /*
     public void atualizar(Exame exame){
         String[] args = {String.valueOf(exame.getId())};
         ContentValues cv = new ContentValues();
-        cv.put("status",exame.getResultado());
+        cv.put("statuss",exame.getResultado());
         cv.put("resultado",exame.getStatus());
         ass.getWritableDatabase().update("Exame",cv, "id = ?", args);
     }*/

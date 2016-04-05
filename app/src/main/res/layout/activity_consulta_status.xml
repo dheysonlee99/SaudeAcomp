@@ -19,24 +19,15 @@
         android:layout_height="wrap_content"
         android:entries="@array/mudastatus"></Spinner>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Resultado:"
-        android:textSize="7pt"
-        />
-    <EditText
-        android:id="@+id/resultados"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="digite o resultado:"
-        android:textSize="7pt"/>
+
+
 
     <Button
         android:onClick="statusClick"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="mudar status"
+        android:layout_gravity="center_horizontal"
         android:textSize="7pt"/>
 
 </LinearLayout>

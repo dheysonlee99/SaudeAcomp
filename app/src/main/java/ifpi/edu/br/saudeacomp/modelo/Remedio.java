@@ -52,7 +52,6 @@ public class Remedio {
 
     @Override
     public String toString() {
-        return "Nome: "+ this.nome +"\n" + " Modo de Uso: "+this.modoUso+
-                "paciente_id= "+this.getPacienteid();
+        return "Remedio: "+this.nome +"\n" +this.modoUso + "\n";
     }
 }

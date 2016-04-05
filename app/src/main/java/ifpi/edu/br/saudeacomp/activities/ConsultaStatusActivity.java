@@ -32,16 +32,15 @@ public class ConsultaStatusActivity extends AppCompatActivity {
     public void statusClick(View elementoClicado){
 
 
-        EditText editResultado = (EditText)findViewById(R.id.resultados);
+
         Spinner editStatus = (Spinner)findViewById(R.id.muda_status);
 
-        String resultado = editResultado.getText().toString();
+
         String status = editStatus.getSelectedItem().toString();
 
 
         Consulta consulta = new Consulta();
         consulta.setStatus(status);
-        consulta.setResultado(resultado);
         consulta.setId(consulta_id);
 
         DBHelper db = new DBHelper(this);
@@ -50,10 +49,10 @@ public class ConsultaStatusActivity extends AppCompatActivity {
 
         dao.atualizarStatus(consulta);
 
-        //Toast.makeText(this, "Veiculo adicionado ;)", Toast.LENGTH_SHORT).show();
+
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Status Atualizada  com sucesso:");
+        builder.setMessage("Status modificado  com sucesso:");
         builder.setPositiveButton("Ok!", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {

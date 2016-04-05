@@ -40,7 +40,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="7pt"
-        android:inputType="date"
         android:hint="DD/MM/AAAA"
         />
 
@@ -75,10 +74,11 @@
 
     <Button
         android:id="@+id/agendar"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Agendar"
         android:textSize="7pt"
-        android:onClick="agendaClick"/>
+        android:onClick="agendaClick"
+        android:layout_gravity="center_horizontal"/>
 
 </LinearLayout>

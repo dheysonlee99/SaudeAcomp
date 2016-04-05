@@ -103,10 +103,12 @@ public class SaudeActivity extends AppCompatActivity {
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
 
         super.onCreateContextMenu(menu, v, menuInfo);
-        final MenuItem addPatologia = menu.add("Adicionar Patologia");
+        MenuItem addPatologia = menu.add("Adicionar Patologia");
         MenuItem agendarConsulta = menu.add("Agendar Consulta");
-        MenuItem agendarExame = menu.add("Agendar Exame");
-        MenuItem addRemedio = menu.add("Adicionar Remedio");
+        //colocando a responsabilidade
+        //MenuItem agendarExame = menu.add("Agendar Exame");
+        // colocando a responsabilidade de adicionar remedio para consulta realizada
+        //MenuItem addRemedio = menu.add("Adicionar Remedio");
         MenuItem verconsultas = menu.add("Ver Consultas");
         MenuItem verExames = menu.add("Ver Exames");
         MenuItem verRemedios = menu.add("Ver Remédios");
@@ -133,7 +135,7 @@ public class SaudeActivity extends AppCompatActivity {
             }
         });
 
-        agendarExame.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+        /*agendarExame.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
 
             @Override
             public boolean onMenuItemClick(MenuItem item) {
@@ -143,9 +145,9 @@ public class SaudeActivity extends AppCompatActivity {
                 startActivity(irParaExame);
                 return false;
             }
-        });
+        });*/
 
-        addRemedio.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+        /*addRemedio.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 Toast.makeText(SaudeActivity.this, "Vc clicou em adicionar remedio:", Toast.LENGTH_SHORT).show();
@@ -154,7 +156,7 @@ public class SaudeActivity extends AppCompatActivity {
                 startActivity(irParaRemedio);
                 return false;
             }
-        });
+        });*/
 
         verconsultas.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
 
@@ -219,7 +221,6 @@ public class SaudeActivity extends AppCompatActivity {
 
         });
     }
-
 
 
 

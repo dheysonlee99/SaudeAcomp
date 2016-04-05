@@ -16,22 +16,22 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        String sql = "CREATE TABLE Paciente " +
+        String paciente = "CREATE TABLE Paciente " +
                 "(id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "nome VARCHAR (50), " +
                 "numeroSus VARCHAR (50), " +
                 "sexo VARCHAR (50)," +
                 "idade INTEGER );";
-        db.execSQL(sql);
+        db.execSQL(paciente);
 
-        sql = "CREATE TABLE Patologia " +
+        String patologia = "CREATE TABLE Patologia " +
                 "(id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "paciente_id INTEGER, " +
                 "nome VARCHAR (50));";
 
-        db.execSQL(sql);
+        db.execSQL(patologia);
 
-        sql = "CREATE TABLE Consulta " +
+        String consulta = "CREATE TABLE Consulta " +
                 "(id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "paciente_id INTEGER, " +
                 "nome VARCHAR (50), " +
@@ -39,9 +39,9 @@ public class DBHelper extends SQLiteOpenHelper {
                 "especialidade VARCHAR (50)," +
                 "status VARCHAR (50)," +
                 "resultado VARCHAR (250));";
-        db.execSQL(sql);
+        db.execSQL(consulta);
 
-        sql = "CREATE TABLE Exame " +
+        String exame = "CREATE TABLE Exame " +
                 "(id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "paciente_id INTEGER, " +
                 "nome VARCHAR (50), " +
@@ -50,14 +50,14 @@ public class DBHelper extends SQLiteOpenHelper {
                 "status VARCHAR (50)," +
                 "resultado VARCHAR (250));";
 
-        db.execSQL(sql);
+        db.execSQL(exame);
 
-        sql = "CREATE TABLE Remedio " +
+        String remedio = "CREATE TABLE Remedio " +
                 "(id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "paciente_id INTEGER, " +
                 "nome VARCHAR (50), " +
                 "modoUso VARCHAR (250));";
-        db.execSQL(sql);
+        db.execSQL(remedio);
 
 
     }
@@ -67,6 +67,8 @@ public class DBHelper extends SQLiteOpenHelper {
 
         String sql = "DROP TABLE IF EXISTS Paciente;";
         db.execSQL(sql);
+
+
         onCreate(db);
 
     }

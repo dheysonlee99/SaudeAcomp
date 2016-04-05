@@ -9,7 +9,6 @@ import android.widget.Toast;
 import java.util.List;
 
 import ifpi.edu.br.saudeacomp.R;
-import ifpi.edu.br.saudeacomp.dao.ConsultaDAO;
 import ifpi.edu.br.saudeacomp.dao.DBHelper;
 import ifpi.edu.br.saudeacomp.dao.PatologiaDAO;
 import ifpi.edu.br.saudeacomp.modelo.Consulta;
@@ -59,6 +58,7 @@ public class ListaPatologiaActivity extends AppCompatActivity {
         //List<Patologia> patologias = dao.patologiasPorPaciente(paciente); //dao.listar();
 
         //ArrayAdapter<Patologia> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, patologias);
+
 
         //listPatologias.setAdapter(adapter);
     }

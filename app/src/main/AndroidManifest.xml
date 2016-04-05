@@ -24,8 +24,10 @@
         <activity
             android:name=".activities.RemedioActivity"
             android:parentActivityName=".activities.SaudeActivity" />
-        <activity android:name=".activities.ListaConsultaActivity" />
-        <activity android:name=".activities.ListaRemedioActivity" />
+        <activity android:name=".activities.ListaConsultaActivity"
+            android:parentActivityName=".activities.SaudeActivity"/>
+        <activity android:name=".activities.ListaRemedioActivity"
+            android:parentActivityName=".activities.SaudeActivity"/>
         <activity android:name=".activities.ExameActivity" />
         <activity android:name=".activities.ListaExameActivity" />
         <activity android:name=".activities.ConsultaStatusActivity" />
