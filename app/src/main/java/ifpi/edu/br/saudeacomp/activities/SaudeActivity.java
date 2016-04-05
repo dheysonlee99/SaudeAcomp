@@ -40,8 +40,10 @@ public class SaudeActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(SaudeActivity.this, "Clicou no item " + position, Toast.LENGTH_SHORT).show();
-
                 paciente = (Paciente) parent.getItemAtPosition(position);
+                Intent verPatologias = new Intent(SaudeActivity.this,ListaPatologiaActivity.class);
+                verPatologias.putExtra("paciente_id",paciente.getId());
+                startActivity(verPatologias);
 
             }
         });
@@ -101,7 +103,7 @@ public class SaudeActivity extends AppCompatActivity {
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
 
         super.onCreateContextMenu(menu, v, menuInfo);
-        //MenuItem addPatologia = menu.add("Adicionar Patologia");
+        final MenuItem addPatologia = menu.add("Adicionar Patologia");
         MenuItem agendarConsulta = menu.add("Agendar Consulta");
         MenuItem agendarExame = menu.add("Agendar Exame");
         MenuItem addRemedio = menu.add("Adicionar Remedio");
@@ -110,7 +112,16 @@ public class SaudeActivity extends AppCompatActivity {
         MenuItem verRemedios = menu.add("Ver Remédios");
         MenuItem apagarPaciente = menu.add("Apagar Paciente");
 
-
+        addPatologia.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                Toast.makeText(SaudeActivity.this, "Vc clicou no adicionar patologia:", Toast.LENGTH_SHORT).show();
+                Intent addPatologia = new Intent(SaudeActivity.this, PatologiaActivity.class);
+                addPatologia.putExtra("paciente_id", paciente.getId());
+                startActivity(addPatologia);
+                return false;
+            }
+        });
         agendarConsulta.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {

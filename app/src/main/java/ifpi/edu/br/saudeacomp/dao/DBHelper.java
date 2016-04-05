@@ -24,6 +24,13 @@ public class DBHelper extends SQLiteOpenHelper {
                 "idade INTEGER );";
         db.execSQL(sql);
 
+        sql = "CREATE TABLE Patologia " +
+                "(id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "paciente_id INTEGER, " +
+                "nome VARCHAR (50));";
+
+        db.execSQL(sql);
+
         sql = "CREATE TABLE Consulta " +
                 "(id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "paciente_id INTEGER, " +

@@ -1,13 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="ifpi.edu.br.saudeacomp.activities.PatologiaActivity">
+    tools:context="ifpi.edu.br.saudeacomp.activities.PatologiaActivity"
+    android:orientation="vertical">
 
-</RelativeLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Adicionar Patologia"
+        android:layout_gravity="center_horizontal"
+        android:textSize="8pt"/>
+    <EditText
+        android:id="@+id/patologia"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="nome da patologia"
+        android:textSize="7pt"/>
+    <Button
+        android:onClick="patologiaClick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="adicionar patologia"
+        android:textSize="7pt"/>
+</LinearLayout>
