@@ -12,6 +12,8 @@ public class Exame {
     private String status;
     private String resultado;
 
+    private int pacienteid;
+
     public Exame(){
     }
 
@@ -25,8 +27,17 @@ public class Exame {
         return id;
     }
 
+
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getPacienteid() {
+        return pacienteid;
+    }
+
+    public void setPacienteid(int pacienteid) {
+        this.pacienteid = pacienteid;
     }
 
     public String getNomeLocal() {
@@ -73,7 +84,7 @@ public class Exame {
     public String toString() {
         return "Local: " +"\n"+ this.nomeLocal + "\n"+
                 "Tipo: "+ this.tipo +"\n"+
-                "Data: " + this.data +"\n"+ this.status;
+                "Data: " + this.data +"\n"+ this.status+ "\n"+this.getPacienteid();
     }
 }
 

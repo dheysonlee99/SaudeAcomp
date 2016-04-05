@@ -34,6 +34,7 @@ public class ListaConsultaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_lista_consulta);
 
         paciente_id = getIntent().getIntExtra("paciente_id", 0);
+        Toast.makeText(ListaConsultaActivity.this, "ID Recebido: " + paciente_id, Toast.LENGTH_SHORT).show();
 
         db = new DBHelper(this);
 
@@ -80,11 +81,11 @@ public class ListaConsultaActivity extends AppCompatActivity {
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
-        MenuItem item1 = menu.add("Mudar status");
-        MenuItem item2 = menu.add("Remover Consulta");
+        MenuItem mudarStatus = menu.add("Mudar status");
+        MenuItem removerConsulta = menu.add("Remover Consulta");
 
 
-        item2.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+        removerConsulta.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
 
             @Override
             public boolean onMenuItemClick(MenuItem item) {

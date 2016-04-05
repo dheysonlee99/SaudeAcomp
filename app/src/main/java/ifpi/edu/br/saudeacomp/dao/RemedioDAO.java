@@ -6,6 +6,7 @@ import android.database.Cursor;
 import java.util.ArrayList;
 import java.util.List;
 
+import ifpi.edu.br.saudeacomp.modelo.Paciente;
 import ifpi.edu.br.saudeacomp.modelo.Remedio;
 
 /**
@@ -18,9 +19,10 @@ public class RemedioDAO {
     public RemedioDAO(DBHelper helper) {
         this.helper = helper;
     }
-    public void inserirRemedio(Remedio remedio){
+    public void inserirRemedio(Remedio remedio, Paciente paciente){
         ContentValues cv = new ContentValues();
         cv.put("nome", remedio.getNome());
+        cv.put("paciente_id",paciente.getId());
         cv.put("modoUso", remedio.getModoUso());
 
         this.helper.getWritableDatabase().insert("Remedio", null, cv);
@@ -33,11 +35,13 @@ public class RemedioDAO {
 
         while (c.moveToNext()) {
             int id = c.getInt(c.getColumnIndex("id"));
+            int pid = c.getInt(c.getColumnIndex("paciente_id"));
             String nome = c.getString(c.getColumnIndex("nome"));
             String modoUso = c.getString(c.getColumnIndex("modoUso"));
-            Remedio r = new Remedio(nome,modoUso);
-            r.setId(id);
-            remedios.add(r);
+            Remedio remedio = new Remedio(nome,modoUso);
+            remedio.setId(id);
+            remedio.setPacienteid(pid);
+            remedios.add(remedio);
         }
 
         return remedios;

@@ -6,6 +6,7 @@ package ifpi.edu.br.saudeacomp.modelo;
 public class Remedio {
 
     private int id;
+    private int pacienteid;
     private String nome;
     private String modoUso;
 
@@ -19,6 +20,14 @@ public class Remedio {
 
     public int getId() {
         return id;
+    }
+
+    public int getPacienteid() {
+        return pacienteid;
+    }
+
+    public void setPacienteid(int pacienteid) {
+        this.pacienteid = pacienteid;
     }
 
     public void setId(int id) {
@@ -43,6 +52,7 @@ public class Remedio {
 
     @Override
     public String toString() {
-        return "Nome: "+ this.nome +"\n" + " Modo de Uso: "+this.modoUso;
+        return "Nome: "+ this.nome +"\n" + " Modo de Uso: "+this.modoUso+
+                "paciente_id= "+this.getPacienteid();
     }
 }

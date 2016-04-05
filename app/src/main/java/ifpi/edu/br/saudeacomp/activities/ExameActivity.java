@@ -7,20 +7,26 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import ifpi.edu.br.saudeacomp.R;
 import ifpi.edu.br.saudeacomp.dao.DBHelper;
 import ifpi.edu.br.saudeacomp.dao.ExameDAO;
 import ifpi.edu.br.saudeacomp.dao.PacienteDAO;
 import ifpi.edu.br.saudeacomp.modelo.Exame;
+import ifpi.edu.br.saudeacomp.modelo.Paciente;
 
 public class ExameActivity extends AppCompatActivity {
 
+    int paciente_id;
     private DBHelper db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exame);
+
+        paciente_id = getIntent().getIntExtra("paciente_id", 0);
+        Toast.makeText(ExameActivity.this, "ID Recebido: " + paciente_id, Toast.LENGTH_SHORT).show();
 
         db = new DBHelper(this);
     }
@@ -40,9 +46,10 @@ public class ExameActivity extends AppCompatActivity {
         String status = editStatus.getSelectedItem().toString();
 
         Exame exame = new Exame(nome,data,tipo,status);
-
+        Paciente paciente = new Paciente();
+        paciente.setId(paciente_id);
         ExameDAO dao = new ExameDAO(db);
-        dao.inserirExame(exame);
+        dao.inserirExame(exame, paciente);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("Exame agendada ");

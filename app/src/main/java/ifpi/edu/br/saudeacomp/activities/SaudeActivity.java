@@ -102,12 +102,12 @@ public class SaudeActivity extends AppCompatActivity {
 
         super.onCreateContextMenu(menu, v, menuInfo);
         MenuItem agendarConsulta = menu.add("Agendar Consulta");
-        MenuItem item2 = menu.add("Agendar Exame");
-        MenuItem item3 = menu.add("Adicionar Remedio");
+        MenuItem agendarExame = menu.add("Agendar Exame");
+        MenuItem addRemedio = menu.add("Adicionar Remedio");
         MenuItem verconsultas = menu.add("Ver Consultas");
-        MenuItem item5 = menu.add("Ver Exames");
-        MenuItem item6 = menu.add("Ver Remédios");
-        MenuItem item7 = menu.add("Apagar Paciente");
+        MenuItem verExames = menu.add("Ver Exames");
+        MenuItem verRemedios = menu.add("Ver Remédios");
+        MenuItem apagarPaciente = menu.add("Apagar Paciente");
 
 
         agendarConsulta.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
@@ -121,23 +121,24 @@ public class SaudeActivity extends AppCompatActivity {
             }
         });
 
-        item2.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+        agendarExame.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
 
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 Toast.makeText(SaudeActivity.this, "Vc clicou no agendar exame:", Toast.LENGTH_SHORT).show();
                 Intent irParaExame = new Intent(SaudeActivity.this, ExameActivity.class);
-
+                irParaExame.putExtra("paciente_id",paciente.getId());
                 startActivity(irParaExame);
                 return false;
             }
         });
 
-        item3.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+        addRemedio.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 Toast.makeText(SaudeActivity.this, "Vc clicou em adicionar remedio:", Toast.LENGTH_SHORT).show();
                 Intent irParaRemedio = new Intent(SaudeActivity.this, RemedioActivity.class);
+                irParaRemedio.putExtra("paciente_id", paciente.getId());
                 startActivity(irParaRemedio);
                 return false;
             }
@@ -148,23 +149,24 @@ public class SaudeActivity extends AppCompatActivity {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 Intent irListaConsultas = new Intent(SaudeActivity.this, ListaConsultaActivity.class);
+                irListaConsultas.putExtra("paciente_id", paciente.getId());
                 startActivity(irListaConsultas);
-                irListaConsultas.putExtra("paciente_id",paciente.getId());
                 return false;
             }
         });
 
-        item5.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+        verExames.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
 
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 Intent irListaExame = new Intent(SaudeActivity.this, ListaExameActivity.class);
+                irListaExame.putExtra("paciente_id",paciente.getId());
                 startActivity(irListaExame);
                 return false;
             }
         });
 
-        item6.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+        verRemedios.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
 
             @Override
             public boolean onMenuItemClick(MenuItem item) {
@@ -178,7 +180,7 @@ public class SaudeActivity extends AppCompatActivity {
 
 
 
-        item7.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+        apagarPaciente.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
 
             @Override
             public boolean onMenuItemClick(MenuItem item) {
