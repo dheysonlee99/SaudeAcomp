@@ -80,9 +80,9 @@ public class Exame {
 
     @Override
     public String toString() {
-        return "Local: " +"\n"+ this.nomeLocal + "\n"+
+        return "Local: " + this.nomeLocal + "\n"+
                 "Tipo: "+ this.tipo +"\n"+
-                "Data: " + this.data +"\n"+ this.status + this.getPacienteid();
+                "Data: " + this.data +"\n"+ this.status;
     }
 }
 
