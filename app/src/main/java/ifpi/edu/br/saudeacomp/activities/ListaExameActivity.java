@@ -78,7 +78,7 @@ public class ListaExameActivity extends AppCompatActivity {
         super.onCreateContextMenu(menu, v, menuInfo);
 
         if(exame.getStatus().equals("Nao Realizado")) {
-            MenuItem mudarStatus = menu.add("Marcar como Realizado");
+            MenuItem mudarStatus = menu.add("Marcar como Realizado e dar resultado");
 
             mudarStatus.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
 

@@ -78,11 +78,21 @@ public class Exame {
         this.resultado = resultado;
     }
 
+
     @Override
     public String toString() {
-        return "Local: " + this.nomeLocal + "\n"+
-                "Tipo: "+ this.tipo +"\n"+
-                "Data: " + this.data +"\n"+ this.status;
+        String retorno = null;
+        if (this.getStatus().equals("Nao Realizado")){
+            retorno = "Local: " + this.nomeLocal + "\n"+
+                    "Tipo: "+ this.tipo +"\n"+
+                    "Data: " + this.data +"\n"+ this.status;
+        }
+        else if (this.getStatus().equals("Realizado")){
+            retorno = "Local: " + this.nomeLocal + "\n"+
+                    "Tipo: "+ this.tipo +"\n"+
+                    "Data: " + this.data +"\n"+"Resultado:"+ "\n"+"- "+this.getResultado() ;
+        }
+        return retorno;
     }
 }
 

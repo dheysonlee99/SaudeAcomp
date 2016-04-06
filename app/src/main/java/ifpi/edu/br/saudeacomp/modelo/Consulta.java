@@ -1,6 +1,8 @@
 package ifpi.edu.br.saudeacomp.modelo;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by programador on 30/03/16.
@@ -15,7 +17,12 @@ public class Consulta implements Serializable {
     private String status;
     private String resultado;
 
-    public Consulta(){}
+    private List<Exame> exames;
+    private List<Remedio> remedios;
+
+    public Consulta(){
+        this.remedios = new ArrayList<>();
+    }
 
     public int getPacienteid() {
         return pacienteid;
@@ -82,10 +89,35 @@ public class Consulta implements Serializable {
         this.resultado = resultado;
     }
 
+    public List<Exame> getExames() {
+        return exames;
+    }
+
+    public void setExames(List<Exame> exames) {
+        this.exames = exames;
+    }
+
+    public void adiExame(Exame exame){
+        this.exames.add(exame);
+    }
+
+
+    public List<Remedio> getRemedios() {
+        return remedios;
+    }
+
+    public void setRemedios(List<Remedio> remedios) {
+        this.remedios = remedios;
+    }
+
+    public void adiRemedio(Remedio remedio){
+        this.remedios.add(remedio);
+    }
+
     @Override
     public String toString() {
         return "Local: "+ this.nome + "\n"+
                 "Especialidade: " + this.especialidade + "\n"+
-                "Data: " + this.data +"\n"+ this.status+ "\n"+this.getPacienteid();
+                "Data: " + this.data +"\n"+ this.status;
     }
 }

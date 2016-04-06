@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -34,13 +35,16 @@ public class ExameStatusActivity extends AppCompatActivity {
 
 
         Spinner editStatus = (Spinner)findViewById(R.id.exame_realizado);
+        EditText editResultado = (EditText)findViewById(R.id.exame_resultado);
 
 
         String status = editStatus.getSelectedItem().toString();
+        String resultado = editResultado.getText().toString();
 
 
         Exame exame = new Exame();
         exame.setStatus(status);
+        exame.setResultado(resultado);
         exame.setId(exame_id);
 
         DBHelper db = new DBHelper(this);
