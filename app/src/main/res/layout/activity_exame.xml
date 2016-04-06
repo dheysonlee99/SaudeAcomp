@@ -60,7 +60,7 @@
 
     <Spinner
         android:id="@+id/status_exames"
-        android:entries="@array/status"
+        android:entries="@array/statusexame"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scrollbarSize="7pt"></Spinner>

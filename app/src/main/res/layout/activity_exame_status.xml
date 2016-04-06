@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ifpi.edu.br.saudeacomp.activities.ExameStatusActivity"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Marcar como realizado:"
+        android:textSize="8pt"
+        android:layout_gravity="center_horizontal"/>
+
+    <Spinner
+        android:id="@+id/exame_realizado"
+        android:entries="@array/examerealizado"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbarSize="7pt"></Spinner>
+
+    <Button
+        android:onClick="exameRealizadoClick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="marcar como realizado"
+        android:textSize="7pt"/>
+
+</LinearLayout>

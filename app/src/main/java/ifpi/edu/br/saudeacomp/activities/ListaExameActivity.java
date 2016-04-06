@@ -2,6 +2,7 @@ package ifpi.edu.br.saudeacomp.activities;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -75,9 +76,24 @@ public class ListaExameActivity extends AppCompatActivity {
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
-        // MenuItem resultado = menu.add("Dar resultado");
-        //MenuItem listarExameTipo = menu.add("Listar Exames por tipo");
+
+        if(exame.getStatus().equals("Nao Realizado")) {
+            MenuItem mudarStatus = menu.add("Marcar como Realizado");
+
+            mudarStatus.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+
+                @Override
+                public boolean onMenuItemClick(MenuItem item) {
+                    Intent mudarStatus = new Intent(ListaExameActivity.this, ExameStatusActivity.class);
+                    mudarStatus.putExtra("exame_id", exame.getId());
+                    startActivity(mudarStatus);
+                    return false;
+                }
+            });
+        }
+
         MenuItem removerExame = menu.add("Remover Exame");
+
 
         removerExame.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
 

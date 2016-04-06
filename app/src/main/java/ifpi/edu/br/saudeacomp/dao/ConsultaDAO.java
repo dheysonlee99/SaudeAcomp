@@ -85,7 +85,6 @@ public class ConsultaDAO  {
     public void atualizarStatus(Consulta consulta){
         ContentValues cv = new ContentValues();
         cv.put("status",consulta.getStatus());
-        cv.put("resultado",consulta.getResultado());
         String[] args = {String.valueOf(consulta.getId())};
         this.helper.getWritableDatabase().update("Consulta",cv, "id = ?", args);
     }

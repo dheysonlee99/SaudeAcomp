@@ -6,6 +6,7 @@ import android.database.Cursor;
 import java.util.ArrayList;
 import java.util.List;
 
+import ifpi.edu.br.saudeacomp.modelo.Consulta;
 import ifpi.edu.br.saudeacomp.modelo.Exame;
 import ifpi.edu.br.saudeacomp.modelo.Paciente;
 
@@ -42,9 +43,11 @@ public class ExameDAO {
             String data = c.getString(c.getColumnIndex("data"));
             String tipo = c.getString(c.getColumnIndex("tipo"));
             String status = c.getString(c.getColumnIndex("status"));
+            String resultado = c.getString(c.getColumnIndex("resultado"));
             Exame exame = new Exame(nome, data,tipo, status);
             exame.setId(id);
             exame.setPacienteid(pid);
+            exame.setResultado(resultado);
             exames.add(exame);
         }
 
@@ -64,9 +67,11 @@ public class ExameDAO {
             String data = c.getString(c.getColumnIndex("data"));
             String tipo = c.getString(c.getColumnIndex("tipo"));
             String status = c.getString(c.getColumnIndex("status"));
+            String resultado = c.getString(c.getColumnIndex("resultado"));
             Exame exame = new Exame(nome, data,tipo, status);
             exame.setId(id);
             exame.setPacienteid(pid);
+            exame.setResultado(resultado);
             exames.add(exame);
         }
 
@@ -100,13 +105,12 @@ public class ExameDAO {
         return exames;
     }*/
 
-    /*
-    public void atualizar(Exame exame){
-        String[] args = {String.valueOf(exame.getId())};
+    public void atualizarStatus(Exame exame){
         ContentValues cv = new ContentValues();
-        cv.put("statuss",exame.getResultado());
-        cv.put("resultado",exame.getStatus());
-        ass.getWritableDatabase().update("Exame",cv, "id = ?", args);
-    }*/
+        cv.put("status",exame.getStatus());
+        cv.put("resultado",exame.getResultado());
+        String[] args = {String.valueOf(exame.getId())};
+        this.helper.getWritableDatabase().update("Exame",cv, "id = ?", args);
+    }
 
 }
