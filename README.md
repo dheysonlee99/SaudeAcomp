@@ -2,6 +2,14 @@
 
 Repositorio com Projeto final da disciplina POO.
 
+Aplicativo para acompanhamento de saude:
+Funcionalidades:
+- permite cadastrar varios pacientes.
+- cada paciente pode agendar consultas.
+- consulta pode ser marcada como realizada.
+- consulta realizada pode marcar exames e/ou adicionar remedios.
+- permite que o paciente veja seu historico de consultas,exames e remedios.
+
 Estrutura dos Pacotes:
 - package ifpi.edu.br.saudeacomp.modelo;
 - package ifpi.edu.br.saudeacomp.activities;
