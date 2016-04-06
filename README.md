@@ -2,7 +2,9 @@
 
 Repositorio com Projeto final da disciplina POO.
 
-Aplicativo para acompanhamento de saude:
+Aplicativo para acompanhamento de saude.
+
+
 Funcionalidades:
 - permite cadastrar varios pacientes.
 - cada paciente pode agendar consultas.
